@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Poppins";
+    src: local("Poppins"), url(./assets/fonts/Poppins-Regular.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
+@font-face {
+    font-family: "Poppins Thin";
+    src: local("Poppins-Thin"), url(./assets/fonts/Poppins-Thin.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
+@font-face {
+    font-family: "Poppins Bold";
+    src: local("Poppins-Bold"), url(./assets/fonts/Poppins-Bold.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
+@font-face {
+    font-family: "DM Serif";
+    src: local("DM Serif"), url(./assets/fonts/DMSerifDisplay-Regular.ttf) format('opentype');
+    font-weight: 100 1000;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}

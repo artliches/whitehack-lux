@@ -1,0 +1,283 @@
+$gap: 0.6rem;
+
+.tab-section {
+    position: fixed;
+    z-index: 10;
+    background-color: black;
+    max-width: 100%;
+    width: 95%;
+    margin: auto;
+    border-bottom: 1px solid white;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    place-content: center;
+    color: grey;
+    text-align: center;
+
+    span {
+        cursor: pointer;
+    }
+
+    .enabled {
+        color: white;
+    }
+}
+
+.sheet-layout {
+    padding-top: 2.1rem;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    grid-gap: $gap;
+
+    input {
+        width: 100%;
+    }
+
+    textarea {
+        background-color: black;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        resize: vertical;
+        border: none;
+    }
+
+    .form-group-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: $gap;
+
+        &.identity {
+            max-width: 100%;
+            width: 96vw;
+            input, textarea {
+                background-color: black;
+                border: none;
+                border-bottom: 1px solid grey;
+                color: white;
+            }
+        }
+
+        &.stats {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+            .main {
+                display: grid;
+                grid-gap: $gap;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-areas: 
+                    "lvl    xp"
+                    "hp     hp"
+                    "ac     st"
+                    "av     av"
+                    "mv     init";
+                .xp {
+                    grid-area: xp;
+                    input {
+                        font-size: 1rem;
+                    }
+                }
+                .level {
+                    grid-area: lvl;
+                }
+                .hp {
+                    grid-area: hp;
+                }
+                .ac {
+                    grid-area: ac;
+                }
+                .st {
+                    grid-area: st;
+                }
+                .av {
+                    grid-area: av;
+                }
+                .mv {
+                    grid-area: mv;
+                }
+                .init {
+                    grid-area: init;
+                }
+            }
+        }
+
+        &.traits {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+
+            .main {
+                display: grid;
+                grid-gap: $gap;
+                grid-template-columns: repeat(2, 1fr);
+                .card-input-layout {
+                    .trait-layout {
+                        input#value {
+                            font-size: 2rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.attunements {
+            textarea {
+                width: 100%;
+                border-bottom: 1px solid grey;
+            }
+
+            .main {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+        }
+
+        &.inventory {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+
+            .main {
+                .inventory-layout {
+                    display: grid;
+                    grid-template-columns: 5% 1fr;
+                    label {
+                        place-self: center start;
+                    }
+    
+                    .inventory-slots-layout {
+                        display: grid;
+                        grid-template-columns: repeat(2, 49%);
+                        input {
+                            text-align: center;
+                            font-family: 'Poppins', sans-serif;
+                            text-transform: capitalize;
+                            background-color: black;
+                            border: none;
+                            border-bottom: 1px solid grey;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.notes {
+            textarea {
+                height: 93vh;
+                width: 95vw;
+                border: 1px solid white;
+            }
+        }
+    }
+
+    .double-column-layout {
+        display: grid;
+        &.horz {
+            grid-template-columns: repeat(2, auto);
+            grid-template-rows: 1fr;
+            &.card {
+                grid-gap: $gap;
+            }
+        }
+        &.vert {
+            place-content: center;
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .label-input-layout {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            font-family: 'Poppins', sans-serif;
+            text-transform: capitalize;
+
+            &#name {
+                font-family: 'DM Serif', serif;
+                font-size: 2rem;
+                letter-spacing: 0.3rem;
+            }
+        }
+
+        textarea {
+            font-family: 'Poppins', sans-serif;
+            resize: vertical;
+        }
+    }
+
+    .card-input-layout {
+        background-color: white;
+        color: grey;
+        display: grid;
+        place-content: stretch;
+        padding: 1rem;
+
+        .hit-point-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .violence-layout {
+            display: grid;
+            grid-template-columns: 15% 60% 25%;
+        }
+
+        .main-label {
+            place-self: center;
+        }
+
+        .trait-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr repeat(2, auto);
+            grid-template-areas:
+                "value"
+                "g1"
+                "g2";
+            
+            #value {
+                grid-area: value;
+            }
+
+            #firstGroup, #secondGroup {
+                font-size: 1rem;
+                font-family: 'Poppins', sans-serif;
+                text-transform: capitalize;
+            }
+        }
+
+        input {
+            color: black;
+            font-family: 'DM Serif', serif;
+            font-size: 1.7rem;
+            letter-spacing: 0.3rem;
+            text-align: center;
+            border: none;
+        }
+        .under-label {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-areas: 
+                "input"
+                "label";
+            label {
+                grid-area: label;
+                place-self: center;
+            }
+            input {
+                place-self: center;
+            }
+        }
+    }
+
+    label, .title {
+        font-family: 'Poppins Bold', sans-serif;
+        font-size: 0.6rem;
+        color: grey;
+    }
+    .title {
+        text-align: center;
+    }
+}
