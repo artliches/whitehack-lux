@@ -347,6 +347,8 @@ export class AppComponent implements OnInit {
       }
     });
     this.imageUrl = '';
+
+    this.setSheet(this.characterSheet.value);
   }
 
   private fillCharacterSheet() {
