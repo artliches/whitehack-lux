@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1670638486871,
+  "timestamp": 1670638962445,
   "index": "/whitehack-lux/index.html",
   "assetGroups": [
     {
@@ -38,14 +38,11 @@
         "/whitehack-lux/assets/fonts/Poppins-Bold.ttf",
         "/whitehack-lux/assets/fonts/Poppins-Regular.ttf",
         "/whitehack-lux/assets/fonts/Poppins-Thin.ttf",
-        "/whitehack-lux/assets/icons/icon-128x128.png",
-        "/whitehack-lux/assets/icons/icon-144x144.png",
-        "/whitehack-lux/assets/icons/icon-152x152.png",
-        "/whitehack-lux/assets/icons/icon-192x192.png",
-        "/whitehack-lux/assets/icons/icon-384x384.png",
-        "/whitehack-lux/assets/icons/icon-512x512.png",
-        "/whitehack-lux/assets/icons/icon-72x72.png",
-        "/whitehack-lux/assets/icons/icon-96x96.png"
+        "/whitehack-lux/assets/icons/android-chrome-192x192.png",
+        "/whitehack-lux/assets/icons/android-chrome-512x512.png",
+        "/whitehack-lux/assets/icons/apple-touch-icon.png",
+        "/whitehack-lux/assets/icons/favicon-16x16.png",
+        "/whitehack-lux/assets/icons/favicon-32x32.png"
       ],
       "patterns": []
     }
@@ -61,18 +58,15 @@
     "/whitehack-lux/assets/fonts/Poppins-Bold.ttf": "875cf0cecd647bcf22e79d633d868c1b1ec98dfa",
     "/whitehack-lux/assets/fonts/Poppins-Regular.ttf": "fdd3002e7d814ee47c1c1b8487c72c6bbb3a2d00",
     "/whitehack-lux/assets/fonts/Poppins-Thin.ttf": "09ba4dcd5509c8085bf88c665dcc51cbdfced27b",
-    "/whitehack-lux/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
-    "/whitehack-lux/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
-    "/whitehack-lux/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
-    "/whitehack-lux/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
-    "/whitehack-lux/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
-    "/whitehack-lux/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
-    "/whitehack-lux/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
-    "/whitehack-lux/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
-    "/whitehack-lux/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/whitehack-lux/index.html": "4d7cc13a266040865f547c658e4f6d2d61cb5670",
+    "/whitehack-lux/assets/icons/android-chrome-192x192.png": "f91b2b3e41d2e6d3d4e2ec7d9b51b58fe6623591",
+    "/whitehack-lux/assets/icons/android-chrome-512x512.png": "94acb06eed43744a82ba63bc1bbd50b188dacb40",
+    "/whitehack-lux/assets/icons/apple-touch-icon.png": "caf3746117d1106324a2ac46d97ad3fc5d960f59",
+    "/whitehack-lux/assets/icons/favicon-16x16.png": "b543d3746d35249dc297573a73ad1858b07a9aa2",
+    "/whitehack-lux/assets/icons/favicon-32x32.png": "2868babc20f2d78a65ed12c7d02477c31632b4c3",
+    "/whitehack-lux/favicon.ico": "29c7575678805c27bc891f6e598b4159d39ac0a5",
+    "/whitehack-lux/index.html": "004641ebcdece348d390571baaea39c0c0f46275",
     "/whitehack-lux/main.38ed64d8377f9d26.js": "0db52a53abd847eaa79b25f83bdfcf72777448cf",
-    "/whitehack-lux/manifest.webmanifest": "140a29100675734a556b19e2ad3158a749751a39",
+    "/whitehack-lux/manifest.webmanifest": "1f940898596c6aae078db46716be4b3638f948cd",
     "/whitehack-lux/polyfills.3c21a2460665d8ab.js": "478b1fbc4908a857117a83e210dd72657a1d28d6",
     "/whitehack-lux/runtime.fd1323c782535571.js": "03ed156d3a19b05fece8fd2d1ece5517b1e8495f",
     "/whitehack-lux/styles.257249a766b80f9e.css": "c899f178b64fe36b1e61b16ac0b39d2640d9bcdd"
