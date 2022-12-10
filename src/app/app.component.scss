@@ -179,17 +179,26 @@ img {
 
         &.notes {
             text-align: center;
+
+            .utilities {
+                font-family: 'Poppins Bold', sans-serif;
+                color: grey;
+            }
             .import-export-layout {
                 width: 100%;
                 height: 85vh;
 
                 display: grid;
+                font-family: 'Poppins Bold', sans-serif;
+                font-size: 0.9rem;
                 grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr) auto;
                 grid-template-areas:
                     "save   load"
-                    "kill   kill";
+                    "kill   kill"
+                    "ver    ver";
                 grid-gap: 1rem;
+                place-content: center;
 
                 .save {
                     grid-area: save;
@@ -200,11 +209,17 @@ img {
                     place-self: start center;
                 }
                 .kill {
+                    letter-spacing: 0.3rem;
                     grid-area: kill;
                     font-size: 1.5rem;
                     place-self: end center;
                     font-family: 'DM Serif', serif;
                     color: rgb(254, 47, 47);
+                }
+                .version {
+                    grid-area: ver;
+                    color: grey;
+                    font-size: 0.6rem;
                 }
                 
             }

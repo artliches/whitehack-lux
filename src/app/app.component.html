@@ -348,9 +348,10 @@
   </span>
 
   <span @enterLeave *ngIf="selectedSection === 'notes'" formGroupName="notes" class="form-group-layout notes">
-    <span (click)="showUtilities = !showUtilities">
-      {{showUtilities ? 'HIDE UTILITIES' : 'SHOW UTILITIES'}}
+    <span class="utilities" (click)="showUtilities = !showUtilities">
+      <strong>{{showUtilities ? 'HIDE UTILITIES' : 'SHOW UTILITIES'}}</strong>
     </span>
+
     <span @enterLeave *ngIf="showUtilities" class="import-export-layout">
       <span>
         <a class="save" (click)="download()" id="downloadAnchorElem">
@@ -358,7 +359,8 @@
         </a>
       </span>
       <span class="load" onclick="document.querySelector('#hiddenInput').click()">LOAD</span>
-      <span class="kill" (click)="kill()">KILL</span>
+      <span class="kill" (click)="kill()"><strong>KILL</strong></span>
+      <span class="version">v.09B</span>
     </span>
     <textarea @enterLeave *ngIf="!showUtilities" id="value" formControlName="value"></textarea>
   </span>
