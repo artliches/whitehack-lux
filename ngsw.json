@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1670638178665,
+  "timestamp": 1670638409982,
   "index": "/whitehack-sheet/index.html",
   "assetGroups": [
     {
@@ -70,9 +70,9 @@
     "/whitehack-sheet/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/whitehack-sheet/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/whitehack-sheet/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/whitehack-sheet/index.html": "0857ce239b074f417689b0079b52d9d52070e1fd",
+    "/whitehack-sheet/index.html": "f71ba85fe7928f9ad95757dfb0d5ec338a35f3eb",
     "/whitehack-sheet/main.38ed64d8377f9d26.js": "0db52a53abd847eaa79b25f83bdfcf72777448cf",
-    "/whitehack-sheet/manifest.webmanifest": "47f5de987361c945dbaaa2a604ab45dd59f51da1",
+    "/whitehack-sheet/manifest.webmanifest": "140a29100675734a556b19e2ad3158a749751a39",
     "/whitehack-sheet/polyfills.3c21a2460665d8ab.js": "478b1fbc4908a857117a83e210dd72657a1d28d6",
     "/whitehack-sheet/runtime.fd1323c782535571.js": "03ed156d3a19b05fece8fd2d1ece5517b1e8495f",
     "/whitehack-sheet/styles.257249a766b80f9e.css": "c899f178b64fe36b1e61b16ac0b39d2640d9bcdd"
