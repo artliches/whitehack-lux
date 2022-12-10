@@ -512,13 +512,17 @@ export class AppComponent implements OnInit {
     }
   }
 
+  private setSheet(charSheet: any) {
+    const saveObject = {
+      img: this.imageUrl,
+      sheet: JSON.stringify(charSheet)
+    };
+    window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(saveObject));
+  }
+
   detectChanges() {
     this.characterSheet.valueChanges.subscribe(result => {
-      const saveObject = {
-        img: this.imageUrl,
-        sheet: JSON.stringify(result)
-      };
-      window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(saveObject));
+      this.setSheet(result);
     });
   }
 
@@ -548,12 +552,7 @@ export class AppComponent implements OnInit {
     fileReader.onload = () =>{
       if (fileReader.result) {
         this.imageUrl = fileReader.result.toString();
-        
-        const saveObject = {
-          img: this.imageUrl,
-          sheet: JSON.stringify(this.characterSheet.value),
-        };
-        window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(saveObject));
+        this.setSheet(this.characterSheet.value);
       }
     }
   }
@@ -566,6 +565,8 @@ export class AppComponent implements OnInit {
     fileReader.onload = () => {
       if (fileReader.result?.toString()) {
         const loadResults = JSON.parse(fileReader.result.toString());
+        
+        this.imageUrl = loadResults.img;
         window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(loadResults));
         this.fillCharacterSheet();
         this.selectedSection = 'stats';

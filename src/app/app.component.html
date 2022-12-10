@@ -12,7 +12,7 @@
       <img id="icon" src={{imageUrl}} alt="" />
     </a>
     <a *ngIf="!imageUrl" onclick="document.querySelector('#hiddenImageInput').click()">
-      <img id="icon" src="/whitehack-lux/assets/icons/dice.png" alt="" />
+      <img id="icon" src="/assets/icons/dice.png" alt="" />
     </a>
     <input style="display: none" #imageUploadInput type="file" id="hiddenImageInput" accept="image/*" (change)="imageUpload($event)">
 
