@@ -27,7 +27,7 @@
 
     <span class="label-input-layout">
       <label for="details"><strong>LANGUAGES, SPECIAL TRAITS, & MUSINGS</strong></label>
-      <textarea id="details"type='text' formControlName="details" autocomplete="off"></textarea>
+      <textarea appTextareaAutosize id="details"type='text' formControlName="details" autocomplete="off"></textarea>
     </span>
   </span>
 
@@ -174,19 +174,19 @@
 
     <span class="main">
       <span class="attunement-layout one">
-        <textarea id="slotOne" formControlName="slotOne"></textarea>
+        <textarea (dblclick)="changeBackground($event)" appTextareaAutosize id="slotOne" formControlName="slotOne"></textarea>
       </span>
 
       <span class="attunement-layout two">
-        <textarea id="slotTwo" formControlName="slotTwo"></textarea>
+        <textarea appTextareaAutosize id="slotTwo" formControlName="slotTwo"></textarea>
       </span>
 
       <span class="attunement-layout three">
-        <textarea id="slotThree" formControlName="slotThree"></textarea>
+        <textarea appTextareaAutosize id="slotThree" formControlName="slotThree"></textarea>
       </span>
 
       <span class="attunement-layout four">
-        <textarea id="slotFour" formControlName="slotFour"></textarea>
+        <textarea appTextareaAutosize id="slotFour" formControlName="slotFour"></textarea>
       </span>
     </span>
   </span>

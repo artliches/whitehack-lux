@@ -348,9 +348,12 @@ export class AppComponent implements OnInit {
 
   detectChanges() {
     this.characterSheet.valueChanges.subscribe(result => {
-      console.log(result);
       window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(result));
     });
+  }
+
+  changeBackground(event: any) {
+    console.log(event);
   }
 
   download() {
