@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1670638962445,
+  "timestamp": 1670699477900,
   "index": "/whitehack-lux/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/whitehack-lux/favicon.ico",
         "/whitehack-lux/index.html",
-        "/whitehack-lux/main.38ed64d8377f9d26.js",
+        "/whitehack-lux/main.7b0cf5fe8859d80a.js",
         "/whitehack-lux/manifest.webmanifest",
         "/whitehack-lux/polyfills.3c21a2460665d8ab.js",
         "/whitehack-lux/runtime.fd1323c782535571.js",
@@ -41,6 +41,7 @@
         "/whitehack-lux/assets/icons/android-chrome-192x192.png",
         "/whitehack-lux/assets/icons/android-chrome-512x512.png",
         "/whitehack-lux/assets/icons/apple-touch-icon.png",
+        "/whitehack-lux/assets/icons/dice.png",
         "/whitehack-lux/assets/icons/favicon-16x16.png",
         "/whitehack-lux/assets/icons/favicon-32x32.png"
       ],
@@ -61,11 +62,12 @@
     "/whitehack-lux/assets/icons/android-chrome-192x192.png": "f91b2b3e41d2e6d3d4e2ec7d9b51b58fe6623591",
     "/whitehack-lux/assets/icons/android-chrome-512x512.png": "94acb06eed43744a82ba63bc1bbd50b188dacb40",
     "/whitehack-lux/assets/icons/apple-touch-icon.png": "caf3746117d1106324a2ac46d97ad3fc5d960f59",
+    "/whitehack-lux/assets/icons/dice.png": "4548bfa3f136b4a5422dd1668da090fcfafd9b6d",
     "/whitehack-lux/assets/icons/favicon-16x16.png": "b543d3746d35249dc297573a73ad1858b07a9aa2",
     "/whitehack-lux/assets/icons/favicon-32x32.png": "2868babc20f2d78a65ed12c7d02477c31632b4c3",
     "/whitehack-lux/favicon.ico": "29c7575678805c27bc891f6e598b4159d39ac0a5",
-    "/whitehack-lux/index.html": "004641ebcdece348d390571baaea39c0c0f46275",
-    "/whitehack-lux/main.38ed64d8377f9d26.js": "0db52a53abd847eaa79b25f83bdfcf72777448cf",
+    "/whitehack-lux/index.html": "41acf7972d5a1a59dad00198cf099d96651c48c3",
+    "/whitehack-lux/main.7b0cf5fe8859d80a.js": "fa6d77a030fda3f04f20db0daa6bf7f1caf7218f",
     "/whitehack-lux/manifest.webmanifest": "1f940898596c6aae078db46716be4b3638f948cd",
     "/whitehack-lux/polyfills.3c21a2460665d8ab.js": "478b1fbc4908a857117a83e210dd72657a1d28d6",
     "/whitehack-lux/runtime.fd1323c782535571.js": "03ed156d3a19b05fece8fd2d1ece5517b1e8495f",
