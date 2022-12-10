@@ -1,6 +1,6 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { KeyValue } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-root',
@@ -19,6 +19,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   ]
 })
 export class AppComponent implements OnInit {
+  @ViewChild('fileUploadInput', {static: false}) inputRef: any;
+
   selectedSection = 'stats';
   characterSheet = new FormGroup({
     identity: new FormGroup({
@@ -181,6 +183,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // window.localStorage.removeItem('whitehack_sheet_lux');
+    this.fillCharacterSheet();
+    this.detectChanges();
+  }
+
+  private fillCharacterSheet() {
     const lStore = window.localStorage.getItem('whitehack_sheet_lux');
     if (lStore) {
       const data = JSON.parse(lStore);
@@ -188,8 +195,8 @@ export class AppComponent implements OnInit {
         identity: {
           name: data.identity.name || '',
           species: data.identity.species || '',
-          vocation:data.identity.vocation || '',
-          pronouns:data.identity.pronouns || '',
+          vocation: data.identity.vocation || '',
+          pronouns: data.identity.pronouns || '',
           details: data.identity.details || '',
         },
         stats: {
@@ -336,15 +343,48 @@ export class AppComponent implements OnInit {
           value: data.notes.value
         }
       });
-      }
-    
-    this.detectChanges();
+    }
   }
 
   detectChanges() {
     this.characterSheet.valueChanges.subscribe(result => {
+      console.log(result);
       window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(result));
     });
+  }
+
+  download() {
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.characterSheet.value));
+    const dlAnchorElem = document.getElementById('downloadAnchorElem');
+    const title = `${this.characterSheet.value.identity.name.toUpperCase()}_SHEET` || 'UNNAMED_SHEET'
+
+    if (dlAnchorElem) {
+      dlAnchorElem.setAttribute('href', dataStr);
+      dlAnchorElem.setAttribute('download', `${title}.json`);
+    }
+  }
+
+  loadCharacter(event: any) {
+    const selectedFile = event.target.files[0];
+    const fileReader = new FileReader();
+
+    fileReader.readAsText(selectedFile, 'UTF-8');
+    fileReader.onload = () => {
+      if (fileReader.result?.toString()) {
+        const loadResults = JSON.parse(fileReader.result.toString());
+        window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(loadResults));
+        this.fillCharacterSheet();
+        this.selectedSection = 'stats';
+        this.reset();
+      }
+    };
+    fileReader.onerror = (error) => {
+      console.log(error);
+    };
+  }
+
+  private reset() {
+    this.inputRef.nativeElement.value = '';
   }
 
   originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {

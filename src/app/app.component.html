@@ -341,6 +341,16 @@
   </span>
 
   <span @enterLeave *ngIf="selectedSection === 'notes'" formGroupName="notes" class="form-group-layout notes">
+    <span class="import-export-layout">
+      <span>
+        <a (click)="download()" id="downloadAnchorElem">
+          <strong>SAVE CHARACTER</strong>
+        </a>
+      </span>
+      <span onclick="document.querySelector('#hiddenInput').click()">LOAD CHARACTER</span>
+    </span>
     <textarea id="value" formControlName="value"></textarea>
   </span>
 </form>
+
+<input style='display: none' #fileUploadInput type='file' id='hiddenInput' accept=".json, application/json" (change)='loadCharacter($event)'>

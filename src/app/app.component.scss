@@ -1,5 +1,10 @@
 $gap: 0.6rem;
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .tab-section {
     position: fixed;
     z-index: 10;
@@ -163,6 +168,14 @@ $gap: 0.6rem;
         }
 
         &.notes {
+            .import-export-layout {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: 1fr;
+                grid-gap: 1rem;
+                place-items: center;
+            }
             textarea {
                 height: 93vh;
                 width: 95vw;
