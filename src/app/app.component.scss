@@ -5,12 +5,19 @@ a {
     color: white;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 .tab-section {
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 10;
     background-color: black;
     max-width: 100%;
-    width: 95%;
+    width: 100%;
     margin: auto;
     border-bottom: 1px solid white;
     display: flex;
@@ -57,6 +64,9 @@ a {
         &.identity {
             max-width: 100%;
             width: 96vw;
+            display: grid;
+            grid-template-rows: repeat(2, auto);
+
             input, textarea {
                 background-color: black;
                 border: none;
@@ -168,13 +178,35 @@ a {
         }
 
         &.notes {
+            text-align: center;
             .import-export-layout {
                 width: 100%;
+                height: 85vh;
+
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: 1fr;
+                grid-template-rows: repeat(2, 1fr);
+                grid-template-areas:
+                    "save   load"
+                    "kill   kill";
                 grid-gap: 1rem;
-                place-items: center;
+
+                .save {
+                    grid-area: save;
+                    place-self: start center;
+                }
+                .load {
+                    grid-area: load;
+                    place-self: start center;
+                }
+                .kill {
+                    grid-area: kill;
+                    font-size: 1.5rem;
+                    place-self: end center;
+                    font-family: 'DM Serif', serif;
+                    color: rgb(254, 47, 47);
+                }
+                
             }
             textarea {
                 height: 89vh;

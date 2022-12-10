@@ -7,27 +7,34 @@
 </span>
 
 <form [formGroup]="characterSheet" class="sheet-layout">
-  <span @enterLeave *ngIf="selectedSection !== 'notes'" formGroupName="identity" class="form-group-layout identity">
-    <span class="label-input-layout">
-      <label for="name"><strong>NAME</strong></label>
-      <input id="name"type='text' formControlName="name" autocomplete="off">
-    </span>
+  <span @enterLeave *ngIf="selectedSection !== 'notes'" class="form-group-layout identity">
+    <a *ngIf="imageUrl" onclick="document.querySelector('#hiddenImageInput').click()">
+      <img id="icon" src={{imageUrl}} alt="" />
+    </a>
+    <a *ngIf="!imageUrl" onclick="document.querySelector('#hiddenImageInput').click()">
+      <img id="icon" src="../assets/icons/dice.png" alt="" />
+    </a>
+    <input style="display: none" #imageUploadInput type="file" id="hiddenImageInput" accept="image/*" (change)="imageUpload($event)">
 
-    <span class="double-column-layout horz">
+    <span formGroupName="identity" class="form-section">
       <span class="label-input-layout">
-        <label for="species"><strong>SPECIES</strong></label>
-        <input id="species"type='text' formControlName="species" autocomplete="off">
+        <label for="name"><strong>NAME</strong></label>
+        <input id="name"type='text' formControlName="name" autocomplete="off">
       </span>
-  
+      <span class="double-column-layout horz">
+        <span class="label-input-layout">
+          <label for="species"><strong>SPECIES</strong></label>
+          <input id="species"type='text' formControlName="species" autocomplete="off">
+        </span>
+        <span class="label-input-layout">
+          <label for="vocation"><strong>VOCATION</strong></label>
+          <input id="vocation"type='text' formControlName="vocation" autocomplete="off">
+        </span>
+      </span>
       <span class="label-input-layout">
-        <label for="vocation"><strong>VOCATION</strong></label>
-        <input id="vocation"type='text' formControlName="vocation" autocomplete="off">
+        <label for="details"><strong>LANGUAGES, SPECIAL TRAITS, & MUSINGS</strong></label>
+        <textarea appTextareaAutosize id="details"type='text' formControlName="details" autocomplete="off"></textarea>
       </span>
-    </span>
-
-    <span class="label-input-layout">
-      <label for="details"><strong>LANGUAGES, SPECIAL TRAITS, & MUSINGS</strong></label>
-      <textarea appTextareaAutosize id="details"type='text' formControlName="details" autocomplete="off"></textarea>
     </span>
   </span>
 
@@ -174,7 +181,7 @@
 
     <span class="main">
       <span class="attunement-layout one">
-        <textarea (dblclick)="changeBackground($event)" appTextareaAutosize id="slotOne" formControlName="slotOne"></textarea>
+        <textarea appTextareaAutosize id="slotOne" formControlName="slotOne"></textarea>
       </span>
 
       <span class="attunement-layout two">
@@ -341,15 +348,19 @@
   </span>
 
   <span @enterLeave *ngIf="selectedSection === 'notes'" formGroupName="notes" class="form-group-layout notes">
-    <span class="import-export-layout">
+    <span (click)="showUtilities = !showUtilities">
+      {{showUtilities ? 'HIDE UTILITIES' : 'SHOW UTILITIES'}}
+    </span>
+    <span @enterLeave *ngIf="showUtilities" class="import-export-layout">
       <span>
-        <a (click)="download()" id="downloadAnchorElem">
-          <strong>SAVE CHARACTER</strong>
+        <a class="save" (click)="download()" id="downloadAnchorElem">
+          <strong>SAVE</strong>
         </a>
       </span>
-      <span onclick="document.querySelector('#hiddenInput').click()">LOAD CHARACTER</span>
+      <span class="load" onclick="document.querySelector('#hiddenInput').click()">LOAD</span>
+      <span class="kill" (click)="kill()">KILL</span>
     </span>
-    <textarea id="value" formControlName="value"></textarea>
+    <textarea @enterLeave *ngIf="!showUtilities" id="value" formControlName="value"></textarea>
   </span>
 </form>
 

@@ -1,5 +1,4 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import { KeyValue } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 @Component({
@@ -21,6 +20,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AppComponent implements OnInit {
   @ViewChild('fileUploadInput', {static: false}) inputRef: any;
 
+  showUtilities = false;
+  imageUrl = '';
   selectedSection = 'stats';
   characterSheet = new FormGroup({
     identity: new FormGroup({
@@ -182,15 +183,177 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // window.localStorage.removeItem('whitehack_sheet_lux');
     this.fillCharacterSheet();
     this.detectChanges();
+  }
+
+  kill() {
+    window.localStorage.removeItem('whitehack_sheet_lux');
+    this.emptyCharacterSheet();
+    this.selectedSection = 'stats';
+  }
+
+  private emptyCharacterSheet() {
+    this.characterSheet.setValue({
+      identity: {
+        name: '',
+        species: '',
+        vocation: '',
+        pronouns: '',
+        details: '',
+      },
+      stats: {
+        xp: {
+          current: '',
+          next: '',
+        },
+        level: '',
+        hitPoints: {
+          current: '',
+          max: '',
+        },
+        attack: {
+          value:'',
+          weapon: '',
+          dmg: '',
+        },
+        armorClass: '',
+        savingThrow:'',
+        movement: '',
+        init: '',
+      },
+      traits: {
+        strength: {
+          value: '',
+          firstGroup: '',
+          secondGroup: '',
+        },
+        constitution: {
+          value: '',
+          firstGroup: '',
+          secondGroup: '',
+        },
+        dexterity: {
+          value: '',
+          firstGroup: '',
+          secondGroup: '',
+        },
+        charisma: {
+          value: '',
+          firstGroup: '',
+          secondGroup: '',
+        },
+        wisdom: {
+          value: '',
+          firstGroup: '',
+          secondGroup: '',
+        },
+        intelligence: {
+          value: '',
+          firstGroup: '',
+          secondGroup: '',
+        },
+      },
+      attunements: {
+        slotOne:    '',
+        slotTwo:    '',
+        slotThree:  '',
+        slotFour:   '',
+      },
+      inventory: {
+        1: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        2: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        3: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        4: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        5: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        6: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        7: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        8: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        9: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        10: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        11: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        12: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        13: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        14: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        15: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        16: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        17: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        18: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        19: {
+          slotOne: '',
+          slotTwo: '',
+        },
+        20: {
+          slotOne: '',
+          slotTwo: '',
+        },
+      },
+      notes: {
+        value: ''
+      }
+    });
+    this.imageUrl = '';
   }
 
   private fillCharacterSheet() {
     const lStore = window.localStorage.getItem('whitehack_sheet_lux');
     if (lStore) {
-      const data = JSON.parse(lStore);
+      const init = JSON.parse(lStore);
+      const data = JSON.parse(init.sheet);
       this.characterSheet.setValue({
         identity: {
           name: data.identity.name || '',
@@ -343,27 +506,55 @@ export class AppComponent implements OnInit {
           value: data.notes.value
         }
       });
+      if (init.img) {
+        this.imageUrl = init.img;
+      }
     }
   }
 
   detectChanges() {
     this.characterSheet.valueChanges.subscribe(result => {
-      window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(result));
+      const saveObject = {
+        img: this.imageUrl,
+        sheet: JSON.stringify(result)
+      };
+      window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(saveObject));
     });
   }
 
-  changeBackground(event: any) {
-    console.log(event);
-  }
-
   download() {
-    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.characterSheet.value));
+    const saveSheet = {
+      img: this.imageUrl,
+      sheet: JSON.stringify(this.characterSheet.value)
+    };
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(saveSheet));
     const dlAnchorElem = document.getElementById('downloadAnchorElem');
     const title = `${this.characterSheet.value.identity.name.toUpperCase()}_SHEET` || 'UNNAMED_SHEET'
 
     if (dlAnchorElem) {
       dlAnchorElem.setAttribute('href', dataStr);
       dlAnchorElem.setAttribute('download', `${title}.json`);
+    }
+  }
+
+  imageUpload(event: any) {
+    const selectedImage = event.target.files[0];
+    if (!selectedImage) {
+      return;
+    }
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(selectedImage);
+    fileReader.onload = () =>{
+      if (fileReader.result) {
+        this.imageUrl = fileReader.result.toString();
+        
+        const saveObject = {
+          img: this.imageUrl,
+          sheet: JSON.stringify(this.characterSheet.value),
+        };
+        window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(saveObject));
+      }
     }
   }
 
@@ -388,9 +579,5 @@ export class AppComponent implements OnInit {
 
   private reset() {
     this.inputRef.nativeElement.value = '';
-  }
-
-  originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
-    return 0;
   }
 }
