@@ -8,15 +8,17 @@
 
 <form [formGroup]="characterSheet" class="sheet-layout">
   <span @enterLeave *ngIf="selectedSection !== 'notes'" class="form-group-layout identity">
-    <a *ngIf="imageUrl" onclick="document.querySelector('#hiddenImageInput').click()">
-      <img id="icon" src={{imageUrl}} alt="" />
-    </a>
-    <a *ngIf="!imageUrl" onclick="document.querySelector('#hiddenImageInput').click()">
-      <img id="icon" src="/whitehack-lux/assets/icons/dice.png" alt="" />
-    </a>
-    <input style="display: none" #imageUploadInput type="file" id="hiddenImageInput" accept="image/*" (change)="imageUpload($event)">
+    <span #icon  class="icon-section">
+      <a *ngIf="imageUrl" onclick="document.querySelector('#hiddenImageInput').click()">
+        <img id="icon" src={{imageUrl}} alt="" />
+      </a>
+      <a *ngIf="!imageUrl" onclick="document.querySelector('#hiddenImageInput').click()">
+        <img id="icon" src="/whitehack-lux/assets/icons/dice.png" alt="" />
+      </a>
+      <input style="display: none" #imageUploadInput type="file" id="hiddenImageInput" accept="image/*" (change)="imageUpload($event)">
+    </span>
 
-    <span formGroupName="identity" class="form-section">
+    <span #name formGroupName="identity" class="form-section">
       <span class="label-input-layout">
         <label for="name"><strong>NAME</strong></label>
         <input id="name"type='text' formControlName="name" autocomplete="off">
@@ -38,7 +40,7 @@
     </span>
   </span>
 
-  <span @enterLeave *ngIf="selectedSection === 'stats'" formGroupName="stats" class="form-group-layout stats">
+  <span #stats @enterLeave *ngIf="selectedSection === 'stats'" formGroupName="stats" class="form-group-layout stats">
     <span class="title">
       STATS
     </span>
@@ -360,7 +362,7 @@
       </span>
       <span class="load" onclick="document.querySelector('#hiddenInput').click()">LOAD</span>
       <span class="kill" (click)="kill()"><strong>KILL</strong></span>
-      <span class="version">v.09B</span>
+      <span class="version">v.091B</span>
     </span>
     <textarea @enterLeave *ngIf="!showUtilities" id="value" formControlName="value"></textarea>
   </span>

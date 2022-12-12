@@ -1,5 +1,5 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-root',
@@ -17,8 +17,27 @@ import { FormControl, FormGroup } from '@angular/forms';
     ]),
   ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('fileUploadInput', {static: false}) inputRef: any;
+  @ViewChild('icon') icon!: ElementRef;
+  @ViewChild('name') nameRef!: ElementRef;
+  @ViewChild('stats') statsRef!: ElementRef;
+
+  @HostListener('document: scroll')
+  hideIcon() {
+    const currCheck = this.icon.nativeElement.getBoundingClientRect().height;
+    const currScroll = window.scrollY;
+    let opacity = 1;
+
+    console.log(currCheck / 2);
+    
+    if (currScroll <= currCheck) {
+      opacity = 1 - currScroll / currCheck;
+    } else {
+      opacity = 0;
+    }
+    this.icon.nativeElement.style.opacity = opacity;
+  }
 
   showUtilities = false;
   imageUrl = '';
@@ -186,6 +205,8 @@ export class AppComponent implements OnInit {
     this.fillCharacterSheet();
     this.detectChanges();
   }
+
+  ngAfterViewInit(): void {}
 
   kill() {
     window.localStorage.removeItem('whitehack_sheet_lux');
