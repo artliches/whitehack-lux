@@ -53,18 +53,18 @@
         <span formGroupName="xp" class="hit-point-layout">
           <span class="under-label">
             <label for="current">CURRENT</label>
-            <input id="current" type="text" formControlName="current" autocomplete="off">
+            <input id="current" type="number" formControlName="current" autocomplete="off">
           </span>
           <span class="under-label">
             <label for="next">NEXT</label>
-            <input id="next" type="text" formControlName="next" autocomplete="off">
+            <input id="next" type="number" formControlName="next" autocomplete="off">
           </span>
         </span>
       </span>
 
       <span class="card-input-layout level">
         <label class="main-label" for="level"><strong>LEVEL</strong></label>
-        <input id="level" type="text" formControlName="level" autocomplete="off">
+        <input id="level" type="number" formControlName="level" autocomplete="off">
       </span>
 
       <span class="card-input-layout hp">
@@ -72,23 +72,23 @@
         <span formGroupName="hitPoints" class="hit-point-layout">
           <span class="under-label">
             <label for="current">CURRENT</label>
-            <input id="current" type="text" formControlName="current" autocomplete="off">
+            <input id="current" type="number" formControlName="current" autocomplete="off">
           </span>
           <span class="under-label">
             <label for="max">MAX</label>
-            <input id="max" type="text" formControlName="max" autocomplete="off">
+            <input id="max" type="number" formControlName="max" autocomplete="off">
           </span>
         </span>
       </span>
 
       <span class="card-input-layout ac">
         <label class="main-label" for="armorClass"><strong>ARMOR CLASS</strong></label>
-        <input id="armorClass" type="text" formControlName="armorClass" autocomplete="off">
+        <input id="armorClass" type="number" formControlName="armorClass" autocomplete="off">
       </span>
 
       <span class="card-input-layout st">
         <label class="main-label" for="savingThrow"><strong>SAVING THROW</strong></label>
-        <input id="savingThrow" type="text" formControlName="savingThrow" autocomplete="off">
+        <input id="savingThrow" type="number" formControlName="savingThrow" autocomplete="off">
       </span>
 
       <span class="card-input-layout av">
@@ -96,7 +96,7 @@
         <span formGroupName="attack" class="violence-layout">
           <span class="under-label">
             <label for="value">AV</label>
-            <input id="attackValue" type="text" formControlName="value" autocomplete="off">
+            <input id="attackValue" type="number" formControlName="value" autocomplete="off">
           </span>
           <span class="under-label">
             <label for="weapon">WEAPON NAME</label>
@@ -104,19 +104,19 @@
           </span>
           <span class="under-label">
             <label for="dmg">DMG</label>
-            <input id="dmg" type="text" formControlName="dmg" autocomplete="off">
+            <input class="lowercase" id="dmg" type="text" formControlName="dmg" autocomplete="off">
           </span>
         </span>
       </span>
 
       <span class="card-input-layout mv">
         <label class="main-label" for="movement"><strong>MOVEMENT</strong></label>
-        <input id="movement" type="text" formControlName="movement" autocomplete="off">
+        <input id="movement" type="number" formControlName="movement" autocomplete="off">
       </span>
       
       <span class="card-input-layout init">
         <label class="main-label" for="init"><strong>INITIATIVE</strong></label>
-        <input id="init" type="text" formControlName="init" autocomplete="off">
+        <input id="init" type="number" formControlName="init" autocomplete="off">
       </span>
     </span>
   </span>
@@ -130,7 +130,7 @@
       <span class="card-input-layout str">
         <label class="main-label" for="strength"><strong>STR</strong></label>
         <span formGroupName="strength" class="trait-layout">
-          <input id="value" type="text" formControlName="value" autocomplete="off">
+          <input id="value" type="number" formControlName="value" autocomplete="off">
           <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
           <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
         </span>
@@ -138,7 +138,7 @@
       <span class="card-input-layout con">
         <label class="main-label" for="constitution"><strong>CON</strong></label>
         <span formGroupName="constitution" class="trait-layout">
-          <input id="value" type="text" formControlName="value" autocomplete="off">
+          <input id="value" type="number" formControlName="value" autocomplete="off">
           <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
           <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
         </span>
@@ -146,7 +146,7 @@
       <span class="card-input-layout dex">
         <label class="main-label" for="dexterity"><strong>DEX</strong></label>
         <span formGroupName="dexterity" class="trait-layout">
-          <input id="value" type="text" formControlName="value" autocomplete="off">
+          <input id="value" type="number" formControlName="value" autocomplete="off">
           <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
           <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
         </span>
@@ -154,7 +154,7 @@
       <span class="card-input-layout cha">
         <label class="main-label" for="charisma"><strong>CHA</strong></label>
         <span formGroupName="charisma" class="trait-layout">
-          <input id="value" type="text" formControlName="value" autocomplete="off">
+          <input id="value" type="number" formControlName="value" autocomplete="off">
           <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
           <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
         </span>
@@ -162,7 +162,7 @@
       <span class="card-input-layout wis">
         <label class="main-label" for="wisdom"><strong>WIS</strong></label>
         <span formGroupName="wisdom" class="trait-layout">
-          <input id="value" type="text" formControlName="value" autocomplete="off">
+          <input id="value" type="number" formControlName="value" autocomplete="off">
           <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
           <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
         </span>
@@ -170,7 +170,7 @@
       <span class="card-input-layout int">
         <label class="main-label" for="intelligence"><strong>INT</strong></label>
         <span formGroupName="intelligence" class="trait-layout">
-          <input id="value" type="text" formControlName="value" autocomplete="off">
+          <input id="value" type="number" formControlName="value" autocomplete="off">
           <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
           <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
         </span>
