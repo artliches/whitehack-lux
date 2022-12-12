@@ -10,6 +10,15 @@ img {
     height: auto;
 }
 
+label, .title {
+    font-family: 'Poppins Bold', sans-serif;
+    font-size: 0.6rem;
+    color: grey;
+}
+.title {
+    text-align: center;
+}
+
 .tab-section {
     position: fixed;
     top: 0;
@@ -56,10 +65,22 @@ img {
         border: none;
     }
 
+    .flat-input {
+        background-color: black;
+        border: none;
+        border-bottom: 1px solid grey;
+        color: white;
+    }
+
     .form-group-layout {
         display: grid;
         grid-template-columns: 1fr;
         grid-gap: $gap;
+
+        .main {
+            display: grid;
+            grid-gap: $gap;
+        }
 
         &.identity {
             max-width: 100%;
@@ -68,18 +89,11 @@ img {
             grid-template-rows: repeat(2, auto);
 
             .form-section {
-                .name-label {
+                .name-label-section {
                     display: grid;
                     grid-template-columns: 1fr auto;
                     grid-template-rows: 1fr;
                 }
-            }
-
-            input, textarea {
-                background-color: black;
-                border: none;
-                border-bottom: 1px solid grey;
-                color: white;
             }
         }
 
@@ -87,8 +101,6 @@ img {
             grid-template-columns: 1fr;
             grid-template-rows: auto 1fr;
             .main {
-                display: grid;
-                grid-gap: $gap;
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-areas: 
                     "lvl    xp"
@@ -131,8 +143,6 @@ img {
             grid-template-rows: auto 1fr;
 
             .main {
-                display: grid;
-                grid-gap: $gap;
                 grid-template-columns: repeat(2, 1fr);
                 .card-input-layout {
                     .trait-layout {
@@ -151,7 +161,6 @@ img {
             }
 
             .main {
-                display: grid;
                 grid-template-columns: 1fr;
             }
         }
@@ -175,10 +184,6 @@ img {
                             text-align: center;
                             font-family: 'Poppins', sans-serif;
                             text-transform: capitalize;
-                            background-color: black;
-                            border: none;
-                            border-bottom: 1px solid grey;
-                            color: white;
                         }
                     }
                 }
@@ -189,8 +194,9 @@ img {
             text-align: center;
 
             .utilities {
-                font-family: 'Poppins Bold', sans-serif;
-                color: grey;
+                strong.title {
+                    font-size: 1rem;
+                }
             }
             .import-export-layout {
                 width: 100%;
@@ -241,16 +247,10 @@ img {
 
     .double-column-layout {
         display: grid;
-        &.horz {
-            grid-template-columns: repeat(2, auto);
-            grid-template-rows: 1fr;
-            &.card {
-                grid-gap: $gap;
-            }
-        }
-        &.vert {
-            place-content: center;
-            grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: 1fr;
+        &.card {
+            grid-gap: $gap;
         }
     }
 
@@ -339,14 +339,5 @@ img {
                 place-self: center;
             }
         }
-    }
-
-    label, .title {
-        font-family: 'Poppins Bold', sans-serif;
-        font-size: 0.6rem;
-        color: grey;
-    }
-    .title {
-        text-align: center;
     }
 }

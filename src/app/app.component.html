@@ -17,25 +17,27 @@
 
     <span #name formGroupName="identity" class="form-section">
       <span class="label-input-layout">
-        <label class="name-label" for="name">
-          <strong>NAME</strong>
-          <span (click)="showIcon = !showIcon">{{showIcon ? 'HIDE ICON' : 'SHOW ICON'}}</span>
-        </label>
-        <input id="name"type='text' formControlName="name" autocomplete="off">
+        <span class="name-label-section">
+          <label for="name">
+            <strong>NAME</strong>
+          </label>
+          <span class="title" (click)="showIcon = !showIcon">{{showIcon ? 'HIDE ICON' : 'SHOW ICON'}}</span>
+        </span>
+        <input class="flat-input" id="name"type='text' formControlName="name" autocomplete="off">
       </span>
       <span class="double-column-layout horz">
         <span class="label-input-layout">
           <label for="species"><strong>SPECIES</strong></label>
-          <input id="species"type='text' formControlName="species" autocomplete="off">
+          <input class="flat-input"  id="species"type='text' formControlName="species" autocomplete="off">
         </span>
         <span class="label-input-layout">
           <label for="vocation"><strong>VOCATION</strong></label>
-          <input id="vocation"type='text' formControlName="vocation" autocomplete="off">
+          <input class="flat-input"  id="vocation"type='text' formControlName="vocation" autocomplete="off">
         </span>
       </span>
       <span class="label-input-layout">
         <label for="details"><strong>LANGUAGES, SPECIAL TRAITS, & MUSINGS</strong></label>
-        <textarea appTextareaAutosize id="details"type='text' formControlName="details" autocomplete="off"></textarea>
+        <textarea class="flat-input"  appTextareaAutosize id="details"type='text' formControlName="details" autocomplete="off"></textarea>
       </span>
     </span>
   </span>
@@ -209,141 +211,141 @@
       <span class="inventory-layout">
         <label for="1">1</label>
         <span class="inventory-slots-layout" formGroupName=1>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input" id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input" id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="2">2</label>
         <span class="inventory-slots-layout" formGroupName=2>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input" id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input" id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="3">3</label>
         <span class="inventory-slots-layout" formGroupName=3>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="4">4</label>
         <span class="inventory-slots-layout" formGroupName=4>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="5">5</label>
         <span class="inventory-slots-layout" formGroupName=5>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="6">6</label>
         <span class="inventory-slots-layout" formGroupName=6>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="7">7</label>
         <span class="inventory-slots-layout" formGroupName=7>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="8">8</label>
         <span class="inventory-slots-layout" formGroupName=8>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="9">9</label>
         <span class="inventory-slots-layout" formGroupName=9>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="10">10</label>
         <span class="inventory-slots-layout" formGroupName=10>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="11">11</label>
         <span class="inventory-slots-layout" formGroupName=11>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="12">12</label>
         <span class="inventory-slots-layout" formGroupName=12>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="13">13</label>
         <span class="inventory-slots-layout" formGroupName=13>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="14">14</label>
         <span class="inventory-slots-layout" formGroupName=14>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="15">15</label>
         <span class="inventory-slots-layout" formGroupName=15>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="16">16</label>
         <span class="inventory-slots-layout" formGroupName=16>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="17">17</label>
         <span class="inventory-slots-layout" formGroupName=17>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="18">18</label>
         <span class="inventory-slots-layout" formGroupName=18>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="19">19</label>
         <span class="inventory-slots-layout" formGroupName=19>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
       <span class="inventory-layout">
         <label for="20">20</label>
         <span class="inventory-slots-layout" formGroupName=20>
-          <input id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
+          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
         </span>
       </span>
     </span>
@@ -351,7 +353,7 @@
 
   <span @enterLeave *ngIf="selectedSection === 'notes'" formGroupName="notes" class="form-group-layout notes">
     <span class="utilities" (click)="showUtilities = !showUtilities">
-      <strong>{{showUtilities ? 'HIDE UTILITIES' : 'SHOW UTILITIES'}}</strong>
+      <strong class="title">{{showUtilities ? 'HIDE UTILITIES' : 'SHOW UTILITIES'}}</strong>
     </span>
 
     <span @enterLeave *ngIf="showUtilities" class="import-export-layout">
