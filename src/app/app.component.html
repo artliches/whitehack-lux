@@ -8,19 +8,22 @@
 
 <form [formGroup]="characterSheet" class="sheet-layout">
   <span @enterLeave *ngIf="selectedSection !== 'notes'" class="form-group-layout identity">
-    <span #icon  class="icon-section">
+    <span @slideUpDown *ngIf="showIcon" #icon  class="icon-section">
       <a *ngIf="imageUrl" onclick="document.querySelector('#hiddenImageInput').click()">
         <img id="icon" src={{imageUrl}} alt="" />
       </a>
       <a *ngIf="!imageUrl" onclick="document.querySelector('#hiddenImageInput').click()">
-        <img id="icon" src="/whitehack-lux/assets/icons/dice.png" alt="" />
+        <img id="icon" src="/assets/icons/dice.png" alt="" />
       </a>
       <input style="display: none" #imageUploadInput type="file" id="hiddenImageInput" accept="image/*" (change)="imageUpload($event)">
     </span>
 
     <span #name formGroupName="identity" class="form-section">
       <span class="label-input-layout">
-        <label for="name"><strong>NAME</strong></label>
+        <label class="name-label" for="name">
+          <strong>NAME</strong>
+          <span (click)="showIcon = !showIcon">{{showIcon ? 'HIDE ICON' : 'SHOW ICON'}}</span>
+        </label>
         <input id="name"type='text' formControlName="name" autocomplete="off">
       </span>
       <span class="double-column-layout horz">
@@ -362,7 +365,7 @@
       </span>
       <span class="load" onclick="document.querySelector('#hiddenInput').click()">LOAD</span>
       <span class="kill" (click)="kill()"><strong>KILL</strong></span>
-      <span class="version">v.091B</span>
+      <span class="version">v.092B</span>
     </span>
     <textarea @enterLeave *ngIf="!showUtilities" id="value" formControlName="value"></textarea>
   </span>

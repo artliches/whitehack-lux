@@ -15,6 +15,16 @@ import { FormControl, FormGroup } from '@angular/forms';
         animate('100ms ease-in-out', style({opacity: 0}))
       ]),
     ]),
+
+    trigger('slideUpDown', [
+      transition(':enter', [
+        style({opacity: 0, transform: 'translate3d(0, -300%, 0'}),
+        animate('400ms ease-in-out', style({opacity: 1, transform: 'translate3d(0,0,0)'})),
+      ]),
+      transition(':leave', [
+        animate('400ms ease-in-out', style({opacity: 0, transform: 'translate3d(0, -300%, 0'}))
+      ]),
+    ]),
   ]
 })
 export class AppComponent implements OnInit, AfterViewInit {
@@ -25,23 +35,24 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @HostListener('document: scroll')
   hideIcon() {
-    const currCheck = this.icon.nativeElement.getBoundingClientRect().height;
-    const currScroll = window.scrollY;
-    let opacity = 1;
-
-    console.log(currCheck / 2);
-    
-    if (currScroll <= currCheck) {
-      opacity = 1 - currScroll / currCheck;
-    } else {
-      opacity = 0;
+    if (this.showIcon) {
+      const currCheck = this.icon.nativeElement.getBoundingClientRect().height;
+      const currScroll = window.scrollY;
+      let opacity = 1;
+      
+      if (currScroll <= currCheck) {
+        opacity = 1 - currScroll / currCheck;
+      } else {
+        opacity = 0;
+      }
+      this.icon.nativeElement.style.opacity = opacity;
     }
-    this.icon.nativeElement.style.opacity = opacity;
   }
 
   showUtilities = false;
   imageUrl = '';
   selectedSection = 'stats';
+  showIcon = true;
   characterSheet = new FormGroup({
     identity: new FormGroup({
       name: new FormControl(),
@@ -207,6 +218,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {}
+
+  hide() {
+    console.log('hide');
+  }
 
   kill() {
     window.localStorage.removeItem('whitehack_sheet_lux');

@@ -67,6 +67,14 @@ img {
             display: grid;
             grid-template-rows: repeat(2, auto);
 
+            .form-section {
+                .name-label {
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+                    grid-template-rows: 1fr;
+                }
+            }
+
             input, textarea {
                 background-color: black;
                 border: none;
