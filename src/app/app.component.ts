@@ -117,11 +117,45 @@ export class AppComponent implements OnInit {
     }),
 
     attunements: new FormGroup({
-      slotOne: new FormControl(),
-      slotTwo: new FormControl(),
-      slotThree: new FormControl(),
-      slotFour: new FormControl(),
-      slotFive: new FormControl(),
+      strong: new FormGroup({
+        one: new FormControl(),
+        two: new FormControl(),
+        three: new FormControl(),
+        four: new FormControl(),
+      }),
+      wise: new FormGroup({
+        firstSection: new FormGroup({
+          one: new FormControl(),
+          two: new FormControl(),
+          three: new FormControl(),
+          four: new FormControl(),
+        }),
+        secondSection: new FormGroup({
+          one: new FormControl(),
+          two: new FormControl(),
+        }),
+        thirdSection: new FormGroup({
+          one: new FormControl(),
+          two: new FormControl(),
+        }),
+        fourSection: new FormGroup({
+          one: new FormControl(),
+          two: new FormControl(),
+        }),
+        fifthSection: new FormGroup({
+          one: new FormControl(),
+          two: new FormControl(),
+        })
+      }),
+      // deft: new FormGroup({
+
+      // }),
+      // fortunate: new FormGroup({
+
+      // }),
+      // brave: new FormGroup({
+
+      // })
     }),
 
     inventory: new FormGroup({
