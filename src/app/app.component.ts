@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
     }
   }
 
+  currentJob = '';
   showUtilities = false;
   imageUrl = '';
   selectedSection = 'stats';
@@ -147,15 +148,24 @@ export class AppComponent implements OnInit {
           two: new FormControl(),
         })
       }),
-      // deft: new FormGroup({
-
-      // }),
-      // fortunate: new FormGroup({
-
-      // }),
-      // brave: new FormGroup({
-
-      // })
+      deft: new FormGroup({
+        firstSection: new FormGroup({
+          one: new FormControl(),
+          two: new FormControl(),
+        }),
+        secondSection: new FormGroup({
+          one: new FormControl(),
+          two: new FormControl(),
+        }),
+        thirdSection: new FormGroup({
+          one: new FormControl(),
+          two: new FormControl(),
+        }),
+        fourSection: new FormGroup({
+          one: new FormControl(),
+          two: new FormControl(),
+        }),
+      }),
     }),
 
     inventory: new FormGroup({
@@ -320,11 +330,54 @@ export class AppComponent implements OnInit {
         },
       },
       attunements: {
-        slotOne:    '',
-        slotTwo:    '',
-        slotThree:  '',
-        slotFour:   '',
-        slotFive:   '',
+        strong: {
+          one:    '',
+          two:    '',
+          three:  '',
+          four:   '',
+        },
+        wise: {
+          firstSection: {
+            one:   '',
+            two:   '',
+            three: '',
+            four:  '',
+          },
+          secondSection: {
+            one: '',
+            two: '',
+          },
+          thirdSection: {
+            one: '',
+            two: '',
+          },
+          fourSection: {
+            one: '',
+            two: '',
+          },
+          fifthSection: {
+            one: '',
+            two: '',
+          }
+        },
+        deft: {
+          firstSection: {
+            one:   '',
+            two:   '',
+          },
+          secondSection: {
+            one: '',
+            two: '',
+          },
+          thirdSection: {
+            one: '',
+            two: '',
+          },
+          fourSection: {
+            one: '',
+            two: '',
+          },
+        },
       },
       inventory: {
         1: {
@@ -413,6 +466,7 @@ export class AppComponent implements OnInit {
       }
     });
     this.imageUrl = '';
+    this.currentJob = '';
 
     this.setSheet(this.characterSheet.value);
   }
@@ -483,11 +537,54 @@ export class AppComponent implements OnInit {
           },
         },
         attunements: {
-          slotOne: data.attunements.slotOne,
-          slotTwo: data.attunements.slotTwo,
-          slotThree: data.attunements.slotThree,
-          slotFour: data.attunements.slotFour,
-          slotFive: data.attunements.slotFive,
+          strong: {
+            one:    data.attunements.strong.one || '',
+            two:    data.attunements.strong.two || '',
+            three:  data.attunements.strong.three || '',
+            four:   data.attunements.strong.four || '',
+          },
+          wise: {
+            firstSection: {
+              one:   data.attunements.wise.firstSection.one || '',
+              two:   data.attunements.wise.firstSection.two || '',
+              three: data.attunements.wise.firstSection.three || '',
+              four:  data.attunements.wise.firstSection.four || '',
+            },
+            secondSection: {
+              one: data.attunements.wise.secondSection.one || '',
+              two: data.attunements.wise.secondSection.two || '',
+            },
+            thirdSection: {
+              one: data.attunements.wise.thirdSection.one || '',
+              two: data.attunements.wise.thirdSection.two || '',
+            },
+            fourSection: {
+              one: data.attunements.wise.fourSection.one || '',
+              two: data.attunements.wise.fourSection.two || '',
+            },
+            fifthSection: {
+              one: data.attunements.wise.fifthSection.one || '',
+              two: data.attunements.wise.fifthSection.two || '',
+            }
+          },
+          deft: {
+            firstSection: {
+              one:   data.attunements.deft.firstSection.one || '',
+              two:   data.attunements.deft.firstSection.two || '',
+            },
+            secondSection: {
+              one: data.attunements.deft.secondSection.one || '',
+              two: data.attunements.deft.secondSection.two || '',
+            },
+            thirdSection: {
+              one: data.attunements.deft.thirdSection.one || '',
+              two: data.attunements.deft.thirdSection.two || '',
+            },
+            fourSection: {
+              one: data.attunements.deft.fourSection.one || '',
+              two: data.attunements.deft.fourSection.two || '',
+            },
+          },
         },
         inventory: {
           1: {
@@ -578,15 +675,24 @@ export class AppComponent implements OnInit {
       if (init.img) {
         this.imageUrl = init.img;
       }
+      if (init.currentJob) {
+        this.currentJob = init.currentJob;
+      }
     }
   }
 
   private setSheet(charSheet: any) {
     const saveObject = {
       img: this.imageUrl,
+      currentJob: this.currentJob,
       sheet: JSON.stringify(charSheet)
     };
     window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(saveObject));
+  }
+
+  changeJob(chosenJob: string) {
+    this.currentJob = chosenJob;
+    this.setSheet(this.characterSheet.value);
   }
 
   detectChanges() {
@@ -598,6 +704,7 @@ export class AppComponent implements OnInit {
   download() {
     const saveSheet = {
       img: this.imageUrl,
+      currentJob: this.currentJob,
       sheet: JSON.stringify(this.characterSheet.value)
     };
     const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(saveSheet));
@@ -636,6 +743,7 @@ export class AppComponent implements OnInit {
         const loadResults = JSON.parse(fileReader.result.toString());
         
         this.imageUrl = loadResults.img;
+        this.currentJob = loadResults.currentJob;
         window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(loadResults));
         this.fillCharacterSheet();
         this.selectedSection = 'stats';

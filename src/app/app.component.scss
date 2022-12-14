@@ -170,12 +170,39 @@ label, .title {
 
         &.attunements {
             textarea {
-                width: 100%;
-                border-bottom: 1px solid grey;
+                background-color: rgb(40, 40, 40);
+                color: white;
+                width: 99%;
             }
 
             .main {
                 grid-template-columns: 1fr;
+                .job-shuffle {
+                    background-color: rgb(40, 40, 40);
+                    color: grey;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 1rem;
+                    place-content: center;
+                    .title {
+                        font-size: 0.8rem;
+                    }
+                    .enabled {
+                        color: white;
+                    }
+                }
+                .multi-slot-section {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    .section-group {
+                        padding: 1px 1px 1rem 1px;
+                        border-bottom: 1px solid white;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                    }
+                }
             }
         }
 
