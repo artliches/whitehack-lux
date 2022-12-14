@@ -66,7 +66,7 @@ label, .title {
         background-color: black;
         color: white;
         font-family: 'Poppins', sans-serif;
-        resize: vertical;
+        resize: none;
         border: none;
     }
 
@@ -154,6 +154,14 @@ label, .title {
                         input#value {
                             font-size: 2rem;
                         }
+                        textarea {
+                            background-color: white;
+                            color: black;
+                            font-family: 'Poppins', sans-serif;
+                            text-align: center;
+                            letter-spacing: 0.3rem;
+                            resize: none;
+                        }
                     }
                 }
             }
@@ -185,10 +193,10 @@ label, .title {
                     .inventory-slots-layout {
                         display: grid;
                         grid-template-columns: repeat(2, 49%);
-                        input {
+                        textarea {
                             text-align: center;
                             font-family: 'Poppins', sans-serif;
-                            text-transform: capitalize;
+                            resize: none;
                         }
                     }
                 }
@@ -246,6 +254,7 @@ label, .title {
                 height: 89vh;
                 width: 95vw;
                 border: 1px solid white;
+                resize: none;
             }
         }
     }
@@ -276,7 +285,7 @@ label, .title {
 
         textarea {
             font-family: 'Poppins', sans-serif;
-            resize: vertical;
+            resize: none;
         }
     }
 
@@ -296,6 +305,14 @@ label, .title {
         .violence-layout {
             display: grid;
             grid-template-columns: 15% 60% 25%;
+            input {
+                font-size: 1.4rem;
+            }
+            .weapon-name {
+                input {
+                    text-transform: capitalize;
+                }
+            }
         }
 
         .main-label {

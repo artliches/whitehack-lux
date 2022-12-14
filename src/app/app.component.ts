@@ -1,5 +1,5 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-root',
@@ -27,7 +27,7 @@ import { FormControl, FormGroup } from '@angular/forms';
     ]),
   ]
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   @ViewChild('fileUploadInput', {static: false}) inputRef: any;
   @ViewChild('icon') icon!: ElementRef;
   @ViewChild('name') nameRef!: ElementRef;
@@ -121,6 +121,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       slotTwo: new FormControl(),
       slotThree: new FormControl(),
       slotFour: new FormControl(),
+      slotFive: new FormControl(),
     }),
 
     inventory: new FormGroup({
@@ -217,12 +218,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.detectChanges();
   }
 
-  ngAfterViewInit(): void {}
-
-  hide() {
-    console.log('hide');
-  }
-
   kill() {
     window.localStorage.removeItem('whitehack_sheet_lux');
     this.emptyCharacterSheet();
@@ -295,6 +290,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         slotTwo:    '',
         slotThree:  '',
         slotFour:   '',
+        slotFive:   '',
       },
       inventory: {
         1: {
@@ -457,6 +453,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           slotTwo: data.attunements.slotTwo,
           slotThree: data.attunements.slotThree,
           slotFour: data.attunements.slotFour,
+          slotFive: data.attunements.slotFive,
         },
         inventory: {
           1: {

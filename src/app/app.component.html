@@ -72,11 +72,11 @@
         <span formGroupName="hitPoints" class="hit-point-layout">
           <span class="under-label">
             <label for="current">CURRENT</label>
-            <input id="current" type="number" formControlName="current" autocomplete="off">
+            <input id="current" type="text" formControlName="current" autocomplete="off">
           </span>
           <span class="under-label">
             <label for="max">MAX</label>
-            <input id="max" type="number" formControlName="max" autocomplete="off">
+            <input id="max" type="text" formControlName="max" autocomplete="off">
           </span>
         </span>
       </span>
@@ -98,7 +98,7 @@
             <label for="value">AV</label>
             <input id="attackValue" type="number" formControlName="value" autocomplete="off">
           </span>
-          <span class="under-label">
+          <span class="under-label weapon-name">
             <label for="weapon">WEAPON NAME</label>
             <input id="weaponName" type="text" formControlName="weapon" autocomplete="off">
           </span>
@@ -116,7 +116,7 @@
       
       <span class="card-input-layout init">
         <label class="main-label" for="init"><strong>INITIATIVE</strong></label>
-        <input id="init" type="number" formControlName="init" autocomplete="off">
+        <input id="init" type="text" formControlName="init" autocomplete="off">
       </span>
     </span>
   </span>
@@ -131,48 +131,48 @@
         <label class="main-label" for="strength"><strong>STR</strong></label>
         <span formGroupName="strength" class="trait-layout">
           <input id="value" type="number" formControlName="value" autocomplete="off">
-          <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
-          <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
+          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="card-input-layout con">
         <label class="main-label" for="constitution"><strong>CON</strong></label>
         <span formGroupName="constitution" class="trait-layout">
           <input id="value" type="number" formControlName="value" autocomplete="off">
-          <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
-          <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
+          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="card-input-layout dex">
         <label class="main-label" for="dexterity"><strong>DEX</strong></label>
         <span formGroupName="dexterity" class="trait-layout">
           <input id="value" type="number" formControlName="value" autocomplete="off">
-          <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
-          <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
+          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="card-input-layout cha">
         <label class="main-label" for="charisma"><strong>CHA</strong></label>
         <span formGroupName="charisma" class="trait-layout">
           <input id="value" type="number" formControlName="value" autocomplete="off">
-          <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
-          <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
+          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="card-input-layout wis">
         <label class="main-label" for="wisdom"><strong>WIS</strong></label>
         <span formGroupName="wisdom" class="trait-layout">
           <input id="value" type="number" formControlName="value" autocomplete="off">
-          <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
-          <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
+          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="card-input-layout int">
         <label class="main-label" for="intelligence"><strong>INT</strong></label>
         <span formGroupName="intelligence" class="trait-layout">
           <input id="value" type="number" formControlName="value" autocomplete="off">
-          <input id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off">
-          <input id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off">
+          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
         </span>
       </span>
     </span>
@@ -199,6 +199,10 @@
       <span class="attunement-layout four">
         <textarea appTextareaAutosize id="slotFour" formControlName="slotFour"></textarea>
       </span>
+
+      <span class="attunement-layout five">
+        <textarea appTextareaAutosize id="slotFive" formControlName="slotFive"></textarea>
+      </span>
     </span>
   </span>
 
@@ -211,141 +215,141 @@
       <span class="inventory-layout">
         <label for="1">1</label>
         <span class="inventory-slots-layout" formGroupName=1>
-          <input class="flat-input" id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input" id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input" id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input" id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="2">2</label>
         <span class="inventory-slots-layout" formGroupName=2>
-          <input class="flat-input" id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input" id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input" id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input" id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="3">3</label>
         <span class="inventory-slots-layout" formGroupName=3>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="4">4</label>
         <span class="inventory-slots-layout" formGroupName=4>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="5">5</label>
         <span class="inventory-slots-layout" formGroupName=5>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="6">6</label>
         <span class="inventory-slots-layout" formGroupName=6>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="7">7</label>
         <span class="inventory-slots-layout" formGroupName=7>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="8">8</label>
         <span class="inventory-slots-layout" formGroupName=8>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="9">9</label>
         <span class="inventory-slots-layout" formGroupName=9>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="10">10</label>
         <span class="inventory-slots-layout" formGroupName=10>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="11">11</label>
         <span class="inventory-slots-layout" formGroupName=11>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="12">12</label>
         <span class="inventory-slots-layout" formGroupName=12>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="13">13</label>
         <span class="inventory-slots-layout" formGroupName=13>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="14">14</label>
         <span class="inventory-slots-layout" formGroupName=14>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="15">15</label>
         <span class="inventory-slots-layout" formGroupName=15>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="16">16</label>
         <span class="inventory-slots-layout" formGroupName=16>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="17">17</label>
         <span class="inventory-slots-layout" formGroupName=17>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="18">18</label>
         <span class="inventory-slots-layout" formGroupName=18>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="19">19</label>
         <span class="inventory-slots-layout" formGroupName=19>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
       <span class="inventory-layout">
         <label for="20">20</label>
         <span class="inventory-slots-layout" formGroupName=20>
-          <input class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off">
-          <input class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off">
+          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
         </span>
       </span>
     </span>
@@ -364,7 +368,7 @@
       </span>
       <span class="load" onclick="document.querySelector('#hiddenInput').click()">LOAD</span>
       <span class="kill" (click)="kill()"><strong>KILL</strong></span>
-      <span class="version">v.095B</span>
+      <span class="version">v.096B</span>
     </span>
     <textarea @enterLeave *ngIf="!showUtilities" id="value" formControlName="value"></textarea>
   </span>
