@@ -1,5 +1,5 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import {Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-root',
@@ -28,6 +28,9 @@ import { FormControl, FormGroup } from '@angular/forms';
   ]
 })
 export class AppComponent implements OnInit {
+  constructor(
+    private renderer: Renderer2
+  ) {}
   @ViewChild('fileUploadInput', {static: false}) inputRef: any;
   @ViewChild('icon') icon!: ElementRef;
   @ViewChild('name') nameRef!: ElementRef;
@@ -255,11 +258,37 @@ export class AppComponent implements OnInit {
       value: new FormControl(),
     })
   });
+  timer: any;
 
 
   ngOnInit(): void {
     this.fillCharacterSheet();
     this.detectChanges();
+  }
+
+  touchStart(event: TouchEvent) {
+    console.log(event.target);
+    this.timer = setTimeout(() => {
+      this.addRemoveLongTouchClass(event);
+    }, 1000);
+  }
+
+  touchEnd() {
+    console.log('test');
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+  }
+
+  addRemoveLongTouchClass(event: any) {
+    console.log('addremove');
+    const chosen = event.target.classList.contains('chosen');
+
+    if (chosen) {
+      this.renderer.removeClass(event.target, 'chosen');
+    } else {
+      this.renderer.addClass(event.target, 'chosen');
+    }
   }
 
   kill() {

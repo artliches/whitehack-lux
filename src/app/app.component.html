@@ -190,59 +190,59 @@
         <strong class="title" [ngClass]="{'enabled': currentJob === 'wise'}" (click)="changeJob('wise')">WISE</strong>
       </span>
 
-      <span formGroupName="strong" @enterLeave *ngIf="currentJob === 'strong'">
+      <span class="attunement-section" (touchstart)="touchStart($event)" (touchend)="touchEnd()" formGroupName="strong" @enterLeave *ngIf="currentJob === 'strong'">
         <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
         <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
         <textarea appTextareaAutosize id="three" formControlName="three"></textarea>
         <textarea appTextareaAutosize id="four" formControlName="four"></textarea>
       </span>
 
-      <span class="multi-slot-section" formGroupName="wise" @enterLeave *ngIf="currentJob === 'wise'">
-        <div class="section-group" formGroupName="firstSection">
+      <span class="multi-slot-section attunement-section" formGroupName="wise" @enterLeave *ngIf="currentJob === 'wise'">
+        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="firstSection">
           <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
           <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
           <textarea appTextareaAutosize id="three" formControlName="three"></textarea>
           <textarea appTextareaAutosize id="four" formControlName="four"></textarea>
         </div>
 
-        <div class="section-group" formGroupName="secondSection">
+        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="secondSection">
           <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
           <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
         </div>
 
-        <div class="section-group" formGroupName="thirdSection">
+        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="thirdSection">
           <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
           <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
         </div>
 
-        <div class="section-group" formGroupName="fourSection">
+        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fourSection">
           <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
           <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
         </div>
 
-        <div class="section-group" formGroupName="fifthSection">
+        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fifthSection">
           <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
           <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
         </div>
       </span>
 
-      <span class="multi-slot-section" formGroupName="deft" @enterLeave *ngIf="currentJob === 'deft'">
-        <div class="section-group" formGroupName="firstSection">
+      <span class="multi-slot-section attunement-section" formGroupName="deft" @enterLeave *ngIf="currentJob === 'deft'">
+        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="firstSection">
           <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
           <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
         </div>
 
-        <div class="section-group" formGroupName="secondSection">
+        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="secondSection">
           <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
           <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
         </div>
 
-        <div class="section-group" formGroupName="thirdSection">
+        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="thirdSection">
           <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
           <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
         </div>
 
-        <div class="section-group" formGroupName="fourSection">
+        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fourSection">
           <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
           <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
         </div>
@@ -412,7 +412,7 @@
       </span>
       <span class="load" onclick="document.querySelector('#hiddenInput').click()">LOAD</span>
       <span class="kill" (click)="kill()"><strong>KILL</strong></span>
-      <span class="version">v.097B</span>
+      <span class="version">v.098B</span>
     </span>
     <textarea @enterLeave *ngIf="!showUtilities" id="value" formControlName="value"></textarea>
   </span>
