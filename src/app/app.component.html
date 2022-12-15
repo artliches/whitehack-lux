@@ -1,421 +1,429 @@
-<span class="tab-section">
-  <span [ngClass]="{enabled: selectedSection === 'stats'}" (click)="selectedSection = 'stats'">STATS</span>
-  <span [ngClass]="{enabled: selectedSection === 'traits'}" (click)="selectedSection = 'traits'">TRAITS</span>
-  <span [ngClass]="{enabled: selectedSection === 'attunements'}" (click)="selectedSection = 'attunements'">ATTUNEMENTS</span>
-  <span [ngClass]="{enabled: selectedSection === 'inventory'}" (click)="selectedSection = 'inventory'">INVENTORY</span>
-  <span [ngClass]="{enabled: selectedSection === 'notes'}" (click)="selectedSection = 'notes'">NOTES</span>
-</span>
-
-<form [formGroup]="characterSheet" class="sheet-layout">
-  <span @enterLeave *ngIf="selectedSection !== 'notes'" class="form-group-layout identity">
-    <span @slideUpDown *ngIf="showIcon" #icon  class="icon-section">
-      <a onclick="document.querySelector('#hiddenImageInput').click()">
-        <img id="icon" [src]="imageUrl || '/whitehack-lux/assets/icons/dice.png'" alt="" />
-      </a>
-      <input style="display: none" #imageUploadInput type="file" id="hiddenImageInput" accept="image/*" (change)="imageUpload($event)">
-    </span>
-
-    <span #name formGroupName="identity" class="form-section">
-      <span class="label-input-layout">
-        <span class="name-label-section">
-          <label for="name">
-            <strong>NAME</strong>
-          </label>
-          <span class="title" (click)="showIcon = !showIcon">{{showIcon ? 'HIDE ICON' : 'SHOW ICON'}}</span>
-        </span>
-        <input class="flat-input" id="name"type='text' formControlName="name" autocomplete="off">
+<ng-container *ngIf="!disableApp; else elseBlock">
+  <span class="tab-section">
+    <span [ngClass]="{enabled: selectedSection === 'stats'}" (click)="selectedSection = 'stats'">STATS</span>
+    <span [ngClass]="{enabled: selectedSection === 'traits'}" (click)="selectedSection = 'traits'">TRAITS</span>
+    <span [ngClass]="{enabled: selectedSection === 'attunements'}" (click)="selectedSection = 'attunements'">ATTUNEMENTS</span>
+    <span [ngClass]="{enabled: selectedSection === 'inventory'}" (click)="selectedSection = 'inventory'">INVENTORY</span>
+    <span [ngClass]="{enabled: selectedSection === 'notes'}" (click)="selectedSection = 'notes'">NOTES</span>
+  </span>
+  
+  <form [formGroup]="characterSheet" class="sheet-layout">
+    <span @enterLeave *ngIf="selectedSection !== 'notes'" class="form-group-layout identity">
+      <span @slideUpDown *ngIf="showIcon" #icon  class="icon-section">
+        <a onclick="document.querySelector('#hiddenImageInput').click()">
+          <img id="icon" [src]="imageUrl || '/whitehack-lux/assets/icons/dice.png'" alt="" />
+        </a>
+        <input style="display: none" #imageUploadInput type="file" id="hiddenImageInput" accept="image/*" (change)="imageUpload($event)">
       </span>
-      <span class="double-column-layout horz">
+  
+      <span #name formGroupName="identity" class="form-section">
         <span class="label-input-layout">
-          <label for="species"><strong>SPECIES</strong></label>
-          <input class="flat-input"  id="species"type='text' formControlName="species" autocomplete="off">
+          <span class="name-label-section">
+            <label for="name">
+              <strong>NAME</strong>
+            </label>
+            <span class="title" (click)="showIcon = !showIcon">{{showIcon ? 'HIDE ICON' : 'SHOW ICON'}}</span>
+          </span>
+          <input class="flat-input" id="name"type='text' formControlName="name" autocomplete="off">
+        </span>
+        <span class="double-column-layout horz">
+          <span class="label-input-layout">
+            <label for="species"><strong>SPECIES</strong></label>
+            <input class="flat-input"  id="species"type='text' formControlName="species" autocomplete="off">
+          </span>
+          <span class="label-input-layout">
+            <label for="vocation"><strong>VOCATION</strong></label>
+            <input class="flat-input"  id="vocation"type='text' formControlName="vocation" autocomplete="off">
+          </span>
         </span>
         <span class="label-input-layout">
-          <label for="vocation"><strong>VOCATION</strong></label>
-          <input class="flat-input"  id="vocation"type='text' formControlName="vocation" autocomplete="off">
-        </span>
-      </span>
-      <span class="label-input-layout">
-        <label for="details"><strong>LANGUAGES, SPECIAL TRAITS, & MUSINGS</strong></label>
-        <textarea class="flat-input"  appTextareaAutosize id="details"type='text' formControlName="details" autocomplete="off"></textarea>
-      </span>
-    </span>
-  </span>
-
-  <span #stats @enterLeave *ngIf="selectedSection === 'stats'" formGroupName="stats" class="form-group-layout stats">
-    <span class="title">
-      STATS
-    </span>
-
-    <span class="main">
-      <span class="card-input-layout xp">
-        <label class="main-label" for="xp"><strong>XP</strong></label>
-        <span formGroupName="xp" class="hit-point-layout">
-          <span class="under-label">
-            <label for="current">CURRENT</label>
-            <input id="current" type="number" formControlName="current" autocomplete="off">
-          </span>
-          <span class="under-label">
-            <label for="next">NEXT</label>
-            <input id="next" type="number" formControlName="next" autocomplete="off">
-          </span>
-        </span>
-      </span>
-
-      <span class="card-input-layout level">
-        <label class="main-label" for="level"><strong>LEVEL</strong></label>
-        <input id="level" type="number" formControlName="level" autocomplete="off">
-      </span>
-
-      <span class="card-input-layout hp">
-        <label class="main-label" for="hitPoints"><strong>HP</strong></label>
-        <span formGroupName="hitPoints" class="hit-point-layout">
-          <span class="under-label">
-            <label for="current">CURRENT</label>
-            <input id="current" type="text" formControlName="current" autocomplete="off">
-          </span>
-          <span class="under-label">
-            <label for="max">MAX</label>
-            <input id="max" type="text" formControlName="max" autocomplete="off">
-          </span>
-        </span>
-      </span>
-
-      <span class="card-input-layout ac">
-        <label class="main-label" for="armorClass"><strong>ARMOR CLASS</strong></label>
-        <input id="armorClass" type="number" formControlName="armorClass" autocomplete="off">
-      </span>
-
-      <span class="card-input-layout st">
-        <label class="main-label" for="savingThrow"><strong>SAVING THROW</strong></label>
-        <input id="savingThrow" type="number" formControlName="savingThrow" autocomplete="off">
-      </span>
-
-      <span class="card-input-layout av">
-        <label class="main-label" for="attack"><strong>VIOLENCE</strong></label>
-        <span formGroupName="attack" class="violence-layout">
-          <span class="under-label">
-            <label for="value">AV</label>
-            <input id="attackValue" type="number" formControlName="value" autocomplete="off">
-          </span>
-          <span class="under-label weapon-name">
-            <label for="weapon">WEAPON NAME</label>
-            <input id="weaponName" type="text" formControlName="weapon" autocomplete="off">
-          </span>
-          <span class="under-label">
-            <label for="dmg">DMG</label>
-            <input class="lowercase" id="dmg" type="text" formControlName="dmg" autocomplete="off">
-          </span>
-        </span>
-      </span>
-
-      <span class="card-input-layout mv">
-        <label class="main-label" for="movement"><strong>MOVEMENT</strong></label>
-        <input id="movement" type="number" formControlName="movement" autocomplete="off">
-      </span>
-      
-      <span class="card-input-layout init">
-        <label class="main-label" for="init"><strong>INITIATIVE</strong></label>
-        <input id="init" type="text" formControlName="init" autocomplete="off">
-      </span>
-    </span>
-  </span>
-
-  <span @enterLeave *ngIf="selectedSection === 'traits'" formGroupName="traits" class="form-group-layout traits">
-    <span class="title">
-      TRAITS
-    </span>
-
-    <span class="main">
-      <span class="card-input-layout str">
-        <label class="main-label" for="strength"><strong>STR</strong></label>
-        <span formGroupName="strength" class="trait-layout">
-          <input id="value" type="number" formControlName="value" autocomplete="off">
-          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="card-input-layout con">
-        <label class="main-label" for="constitution"><strong>CON</strong></label>
-        <span formGroupName="constitution" class="trait-layout">
-          <input id="value" type="number" formControlName="value" autocomplete="off">
-          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="card-input-layout dex">
-        <label class="main-label" for="dexterity"><strong>DEX</strong></label>
-        <span formGroupName="dexterity" class="trait-layout">
-          <input id="value" type="number" formControlName="value" autocomplete="off">
-          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="card-input-layout cha">
-        <label class="main-label" for="charisma"><strong>CHA</strong></label>
-        <span formGroupName="charisma" class="trait-layout">
-          <input id="value" type="number" formControlName="value" autocomplete="off">
-          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="card-input-layout wis">
-        <label class="main-label" for="wisdom"><strong>WIS</strong></label>
-        <span formGroupName="wisdom" class="trait-layout">
-          <input id="value" type="number" formControlName="value" autocomplete="off">
-          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="card-input-layout int">
-        <label class="main-label" for="intelligence"><strong>INT</strong></label>
-        <span formGroupName="intelligence" class="trait-layout">
-          <input id="value" type="number" formControlName="value" autocomplete="off">
-          <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
+          <label for="details"><strong>LANGUAGES, SPECIAL TRAITS, & MUSINGS</strong></label>
+          <textarea class="flat-input"  appTextareaAutosize id="details"type='text' formControlName="details" autocomplete="off"></textarea>
         </span>
       </span>
     </span>
-  </span>
-
-  <span @enterLeave *ngIf="selectedSection === 'attunements'" formGroupName="attunements" class="form-group-layout attunements">
-    <span class="title">
-      ATTUNEMENTS
+  
+    <span #stats @enterLeave *ngIf="selectedSection === 'stats'" formGroupName="stats" class="form-group-layout stats">
+      <span class="title">
+        STATS
+      </span>
+  
+      <span class="main">
+        <span class="card-input-layout xp">
+          <label class="main-label" for="xp"><strong>XP</strong></label>
+          <span formGroupName="xp" class="hit-point-layout">
+            <span class="under-label">
+              <label for="current">CURRENT</label>
+              <input id="current" type="number" formControlName="current" autocomplete="off">
+            </span>
+            <span class="under-label">
+              <label for="next">NEXT</label>
+              <input id="next" type="number" formControlName="next" autocomplete="off">
+            </span>
+          </span>
+        </span>
+  
+        <span class="card-input-layout level">
+          <label class="main-label" for="level"><strong>LEVEL</strong></label>
+          <input id="level" type="number" formControlName="level" autocomplete="off">
+        </span>
+  
+        <span class="card-input-layout hp">
+          <label class="main-label" for="hitPoints"><strong>HP</strong></label>
+          <span formGroupName="hitPoints" class="hit-point-layout">
+            <span class="under-label">
+              <label for="current">CURRENT</label>
+              <input id="current" type="text" formControlName="current" autocomplete="off">
+            </span>
+            <span class="under-label">
+              <label for="max">MAX</label>
+              <input id="max" type="text" formControlName="max" autocomplete="off">
+            </span>
+          </span>
+        </span>
+  
+        <span class="card-input-layout ac">
+          <label class="main-label" for="armorClass"><strong>ARMOR CLASS</strong></label>
+          <input id="armorClass" type="number" formControlName="armorClass" autocomplete="off">
+        </span>
+  
+        <span class="card-input-layout st">
+          <label class="main-label" for="savingThrow"><strong>SAVING THROW</strong></label>
+          <input id="savingThrow" type="number" formControlName="savingThrow" autocomplete="off">
+        </span>
+  
+        <span class="card-input-layout av">
+          <label class="main-label" for="attack"><strong>VIOLENCE</strong></label>
+          <span formGroupName="attack" class="violence-layout">
+            <span class="under-label">
+              <label for="value">AV</label>
+              <input id="attackValue" type="number" formControlName="value" autocomplete="off">
+            </span>
+            <span class="under-label weapon-name">
+              <label for="weapon">WEAPON NAME</label>
+              <input id="weaponName" type="text" formControlName="weapon" autocomplete="off">
+            </span>
+            <span class="under-label">
+              <label for="dmg">DMG</label>
+              <input class="lowercase" id="dmg" type="text" formControlName="dmg" autocomplete="off">
+            </span>
+          </span>
+        </span>
+  
+        <span class="card-input-layout mv">
+          <label class="main-label" for="movement"><strong>MOVEMENT</strong></label>
+          <input id="movement" type="number" formControlName="movement" autocomplete="off">
+        </span>
+  
+        <span class="card-input-layout init">
+          <label class="main-label" for="init"><strong>INITIATIVE</strong></label>
+          <input id="init" type="text" formControlName="init" autocomplete="off">
+        </span>
+      </span>
     </span>
-
-    <span class="main">
-      <span class="job-shuffle">
-        <strong class="title" [ngClass]="{'enabled': currentJob === 'deft'}" (click)="changeJob('deft')">DEFT</strong>
-        <strong class="title" [ngClass]="{'enabled': currentJob === 'strong'}" (click)="changeJob('strong')">STRONG</strong>
-        <strong class="title" [ngClass]="{'enabled': currentJob === 'wise'}" (click)="changeJob('wise')">WISE</strong>
+  
+    <span @enterLeave *ngIf="selectedSection === 'traits'" formGroupName="traits" class="form-group-layout traits">
+      <span class="title">
+        TRAITS
       </span>
-
-      <span class="attunement-section" (touchstart)="touchStart($event)" (touchend)="touchEnd()" formGroupName="strong" @enterLeave *ngIf="currentJob === 'strong'">
-        <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
-        <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
-        <textarea appTextareaAutosize id="three" formControlName="three"></textarea>
-        <textarea appTextareaAutosize id="four" formControlName="four"></textarea>
+  
+      <span class="main">
+        <span class="card-input-layout str">
+          <label class="main-label" for="strength"><strong>STR</strong></label>
+          <span formGroupName="strength" class="trait-layout">
+            <input id="value" type="number" formControlName="value" autocomplete="off">
+            <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="card-input-layout con">
+          <label class="main-label" for="constitution"><strong>CON</strong></label>
+          <span formGroupName="constitution" class="trait-layout">
+            <input id="value" type="number" formControlName="value" autocomplete="off">
+            <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="card-input-layout dex">
+          <label class="main-label" for="dexterity"><strong>DEX</strong></label>
+          <span formGroupName="dexterity" class="trait-layout">
+            <input id="value" type="number" formControlName="value" autocomplete="off">
+            <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="card-input-layout cha">
+          <label class="main-label" for="charisma"><strong>CHA</strong></label>
+          <span formGroupName="charisma" class="trait-layout">
+            <input id="value" type="number" formControlName="value" autocomplete="off">
+            <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="card-input-layout wis">
+          <label class="main-label" for="wisdom"><strong>WIS</strong></label>
+          <span formGroupName="wisdom" class="trait-layout">
+            <input id="value" type="number" formControlName="value" autocomplete="off">
+            <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="card-input-layout int">
+          <label class="main-label" for="intelligence"><strong>INT</strong></label>
+          <span formGroupName="intelligence" class="trait-layout">
+            <input id="value" type="number" formControlName="value" autocomplete="off">
+            <textarea appTextareaAutosize id="firstGroup" type="text" formControlName="firstGroup" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize id="secondGroup" type="text" formControlName="secondGroup" autocomplete="off"></textarea>
+          </span>
+        </span>
       </span>
-
-      <span class="multi-slot-section attunement-section" formGroupName="wise" @enterLeave *ngIf="currentJob === 'wise'">
-        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="firstSection">
+    </span>
+  
+    <span @enterLeave *ngIf="selectedSection === 'attunements'" formGroupName="attunements" class="form-group-layout attunements">
+      <span class="title">
+        ATTUNEMENTS
+      </span>
+  
+      <span class="main">
+        <span class="job-shuffle">
+          <strong class="title" [ngClass]="{'enabled': currentJob === 'deft'}" (click)="changeJob('deft')">DEFT</strong>
+          <strong class="title" [ngClass]="{'enabled': currentJob === 'strong'}" (click)="changeJob('strong')">STRONG</strong>
+          <strong class="title" [ngClass]="{'enabled': currentJob === 'wise'}" (click)="changeJob('wise')">WISE</strong>
+        </span>
+  
+        <span class="attunement-section" (touchstart)="touchStart($event)" (touchend)="touchEnd()" formGroupName="strong" @enterLeave *ngIf="currentJob === 'strong'">
           <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
           <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
           <textarea appTextareaAutosize id="three" formControlName="three"></textarea>
           <textarea appTextareaAutosize id="four" formControlName="four"></textarea>
-        </div>
-
-        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="secondSection">
-          <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
-          <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
-        </div>
-
-        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="thirdSection">
-          <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
-          <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
-        </div>
-
-        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fourSection">
-          <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
-          <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
-        </div>
-
-        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fifthSection">
-          <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
-          <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
-        </div>
-      </span>
-
-      <span class="multi-slot-section attunement-section" formGroupName="deft" @enterLeave *ngIf="currentJob === 'deft'">
-        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="firstSection">
-          <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
-          <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
-        </div>
-
-        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="secondSection">
-          <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
-          <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
-        </div>
-
-        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="thirdSection">
-          <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
-          <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
-        </div>
-
-        <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fourSection">
-          <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
-          <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
-        </div>
+        </span>
+  
+        <span class="multi-slot-section attunement-section" formGroupName="wise" @enterLeave *ngIf="currentJob === 'wise'">
+          <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="firstSection">
+            <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
+            <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
+            <textarea appTextareaAutosize id="three" formControlName="three"></textarea>
+            <textarea appTextareaAutosize id="four" formControlName="four"></textarea>
+          </div>
+  
+          <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="secondSection">
+            <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
+            <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
+          </div>
+  
+          <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="thirdSection">
+            <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
+            <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
+          </div>
+  
+          <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fourSection">
+            <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
+            <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
+          </div>
+  
+          <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fifthSection">
+            <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
+            <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
+          </div>
+        </span>
+  
+        <span class="multi-slot-section attunement-section" formGroupName="deft" @enterLeave *ngIf="currentJob === 'deft'">
+          <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="firstSection">
+            <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
+            <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
+          </div>
+  
+          <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="secondSection">
+            <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
+            <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
+          </div>
+  
+          <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="thirdSection">
+            <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
+            <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
+          </div>
+  
+          <div (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fourSection">
+            <textarea appTextareaAutosize id="one" formControlName="one"></textarea>
+            <textarea appTextareaAutosize id="two" formControlName="two"></textarea>
+          </div>
+        </span>
       </span>
     </span>
+  
+    <span @enterLeave *ngIf="selectedSection === 'inventory'" formGroupName="inventory" class="form-group-layout inventory">
+      <span class="title">
+        INVENTORY
+      </span>
+  
+      <span class="main">
+        <span class="inventory-layout">
+          <label for="1">1</label>
+          <span class="inventory-slots-layout" formGroupName=1>
+            <textarea appTextareaAutosize  class="flat-input" id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input" id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="2">2</label>
+          <span class="inventory-slots-layout" formGroupName=2>
+            <textarea appTextareaAutosize  class="flat-input" id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input" id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="3">3</label>
+          <span class="inventory-slots-layout" formGroupName=3>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="4">4</label>
+          <span class="inventory-slots-layout" formGroupName=4>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="5">5</label>
+          <span class="inventory-slots-layout" formGroupName=5>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="6">6</label>
+          <span class="inventory-slots-layout" formGroupName=6>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="7">7</label>
+          <span class="inventory-slots-layout" formGroupName=7>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="8">8</label>
+          <span class="inventory-slots-layout" formGroupName=8>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="9">9</label>
+          <span class="inventory-slots-layout" formGroupName=9>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="10">10</label>
+          <span class="inventory-slots-layout" formGroupName=10>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="11">11</label>
+          <span class="inventory-slots-layout" formGroupName=11>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="12">12</label>
+          <span class="inventory-slots-layout" formGroupName=12>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="13">13</label>
+          <span class="inventory-slots-layout" formGroupName=13>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="14">14</label>
+          <span class="inventory-slots-layout" formGroupName=14>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="15">15</label>
+          <span class="inventory-slots-layout" formGroupName=15>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="16">16</label>
+          <span class="inventory-slots-layout" formGroupName=16>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="17">17</label>
+          <span class="inventory-slots-layout" formGroupName=17>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="18">18</label>
+          <span class="inventory-slots-layout" formGroupName=18>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="19">19</label>
+          <span class="inventory-slots-layout" formGroupName=19>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+        <span class="inventory-layout">
+          <label for="20">20</label>
+          <span class="inventory-slots-layout" formGroupName=20>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
+            <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
+          </span>
+        </span>
+      </span>
+    </span>
+  
+    <span @enterLeave *ngIf="selectedSection === 'notes'" formGroupName="notes" class="form-group-layout notes">
+      <span class="utilities" (click)="showUtilities = !showUtilities">
+        <strong class="title">{{showUtilities ? 'HIDE UTILITIES' : 'SHOW UTILITIES'}}</strong>
+      </span>
+  
+      <span @enterLeave *ngIf="showUtilities" class="import-export-layout">
+        <span>
+          <a class="save" (click)="download()" id="downloadAnchorElem">
+            <strong>SAVE</strong>
+          </a>
+        </span>
+        <span class="load" onclick="document.querySelector('#hiddenInput').click()">LOAD</span>
+        <span class="kill" (click)="kill()"><strong>KILL</strong></span>
+        <span class="version">v.0988B</span>
+      </span>
+      <textarea @enterLeave *ngIf="!showUtilities" id="value" formControlName="value"></textarea>
+    </span>
+  </form>
+  
+  <input style='display: none' #fileUploadInput type='file' id='hiddenInput' accept=".json, application/json" (change)='loadCharacter($event)'>
+</ng-container>
+
+<ng-template #elseBlock>
+  <span class="disabled-message">
+    WHITEHACK LUX IS MEANT FOR PHONES ONLY
   </span>
-
-  <span @enterLeave *ngIf="selectedSection === 'inventory'" formGroupName="inventory" class="form-group-layout inventory">
-    <span class="title">
-      INVENTORY
-    </span>
-
-    <span class="main">
-      <span class="inventory-layout">
-        <label for="1">1</label>
-        <span class="inventory-slots-layout" formGroupName=1>
-          <textarea appTextareaAutosize  class="flat-input" id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input" id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="2">2</label>
-        <span class="inventory-slots-layout" formGroupName=2>
-          <textarea appTextareaAutosize  class="flat-input" id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input" id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="3">3</label>
-        <span class="inventory-slots-layout" formGroupName=3>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="4">4</label>
-        <span class="inventory-slots-layout" formGroupName=4>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="5">5</label>
-        <span class="inventory-slots-layout" formGroupName=5>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="6">6</label>
-        <span class="inventory-slots-layout" formGroupName=6>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="7">7</label>
-        <span class="inventory-slots-layout" formGroupName=7>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="8">8</label>
-        <span class="inventory-slots-layout" formGroupName=8>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="9">9</label>
-        <span class="inventory-slots-layout" formGroupName=9>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="10">10</label>
-        <span class="inventory-slots-layout" formGroupName=10>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="11">11</label>
-        <span class="inventory-slots-layout" formGroupName=11>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="12">12</label>
-        <span class="inventory-slots-layout" formGroupName=12>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="13">13</label>
-        <span class="inventory-slots-layout" formGroupName=13>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="14">14</label>
-        <span class="inventory-slots-layout" formGroupName=14>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="15">15</label>
-        <span class="inventory-slots-layout" formGroupName=15>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="16">16</label>
-        <span class="inventory-slots-layout" formGroupName=16>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="17">17</label>
-        <span class="inventory-slots-layout" formGroupName=17>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="18">18</label>
-        <span class="inventory-slots-layout" formGroupName=18>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="19">19</label>
-        <span class="inventory-slots-layout" formGroupName=19>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-      <span class="inventory-layout">
-        <label for="20">20</label>
-        <span class="inventory-slots-layout" formGroupName=20>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotOne" type="text" formControlName="slotOne" autocomplete="off"></textarea>
-          <textarea appTextareaAutosize  class="flat-input"  id="slotTwo" type="text" formControlName="slotTwo" autocomplete="off"></textarea>
-        </span>
-      </span>
-    </span>
-  </span>
-
-  <span @enterLeave *ngIf="selectedSection === 'notes'" formGroupName="notes" class="form-group-layout notes">
-    <span class="utilities" (click)="showUtilities = !showUtilities">
-      <strong class="title">{{showUtilities ? 'HIDE UTILITIES' : 'SHOW UTILITIES'}}</strong>
-    </span>
-
-    <span @enterLeave *ngIf="showUtilities" class="import-export-layout">
-      <span>
-        <a class="save" (click)="download()" id="downloadAnchorElem">
-          <strong>SAVE</strong>
-        </a>
-      </span>
-      <span class="load" onclick="document.querySelector('#hiddenInput').click()">LOAD</span>
-      <span class="kill" (click)="kill()"><strong>KILL</strong></span>
-      <span class="version">v.098B</span>
-    </span>
-    <textarea @enterLeave *ngIf="!showUtilities" id="value" formControlName="value"></textarea>
-  </span>
-</form>
-
-<input style='display: none' #fileUploadInput type='file' id='hiddenInput' accept=".json, application/json" (change)='loadCharacter($event)'>
+</ng-template>

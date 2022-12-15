@@ -1,5 +1,5 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import {Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import {Component, ElementRef, Host, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-root',
@@ -52,6 +52,16 @@ export class AppComponent implements OnInit {
     }
   }
 
+  @HostListener('window: resize')
+  resize() {
+    if (window.innerWidth > 425) {
+      this.disableApp = true;
+    } else {
+      this.disableApp = false;
+    }
+  }
+
+  disableApp = false;
   currentJob = '';
   showUtilities = false;
   imageUrl = '';
@@ -262,6 +272,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.resize();
     this.fillCharacterSheet();
     this.detectChanges();
   }
