@@ -61,6 +61,7 @@ export class AppComponent implements OnInit {
     }
   }
 
+  slotList = new Array<any>();
   disableApp = false;
   currentJob = '';
   showUtilities = false;
@@ -277,29 +278,50 @@ export class AppComponent implements OnInit {
     this.detectChanges();
   }
 
-  touchStart(event: TouchEvent) {
-    console.log(event.target);
-    this.timer = setTimeout(() => {
-      this.addRemoveLongTouchClass(event);
-    }, 1000);
+  touchStart(event: any) {
+    if (this.currentJob !== 'strong') {
+      this.timer = setTimeout(() => {
+        this.addRemoveLongTouchClass(event);
+      }, 1000);
+    }
+
   }
 
   touchEnd() {
-    console.log('test');
     if (this.timer) {
       clearTimeout(this.timer);
     }
   }
 
   addRemoveLongTouchClass(event: any) {
-    console.log('addremove');
     const chosen = event.target.classList.contains('chosen');
+    const children = this.renderer.parentNode(event.target).children;
 
     if (chosen) {
       this.renderer.removeClass(event.target, 'chosen');
     } else {
+      // remove class from children
+      for (let i = 0; i < children.length; i++) {
+        this.renderer.removeClass(children[i], 'chosen');
+      }
       this.renderer.addClass(event.target, 'chosen');
+
+      // const parentId = this.renderer.parentNode(event.target).id;
+      // const targetId = event.target.id;
+
+      // this.characterSheet.patchValue({
+      //   attunements: {
+      //     [this.currentJob]: {
+      //       [parentId]: {
+      //         [targetId]: [event.target.value, true]
+      //       }
+      //     }
+      //   }
+      // });
+      
+      // console.log(this.characterSheet.value);
     }
+
   }
 
   kill() {
@@ -309,202 +331,7 @@ export class AppComponent implements OnInit {
   }
 
   private emptyCharacterSheet() {
-    this.characterSheet.setValue({
-      identity: {
-        name: '',
-        species: '',
-        vocation: '',
-        pronouns: '',
-        details: '',
-      },
-      stats: {
-        xp: {
-          current: '',
-          next: '',
-        },
-        level: '',
-        hitPoints: {
-          current: '',
-          max: '',
-        },
-        attack: {
-          value:'',
-          weapon: '',
-          dmg: '',
-        },
-        armorClass: '',
-        savingThrow:'',
-        movement: '',
-        init: '',
-      },
-      traits: {
-        strength: {
-          value: '',
-          firstGroup: '',
-          secondGroup: '',
-        },
-        constitution: {
-          value: '',
-          firstGroup: '',
-          secondGroup: '',
-        },
-        dexterity: {
-          value: '',
-          firstGroup: '',
-          secondGroup: '',
-        },
-        charisma: {
-          value: '',
-          firstGroup: '',
-          secondGroup: '',
-        },
-        wisdom: {
-          value: '',
-          firstGroup: '',
-          secondGroup: '',
-        },
-        intelligence: {
-          value: '',
-          firstGroup: '',
-          secondGroup: '',
-        },
-      },
-      attunements: {
-        strong: {
-          one:    '',
-          two:    '',
-          three:  '',
-          four:   '',
-        },
-        wise: {
-          firstSection: {
-            one:   '',
-            two:   '',
-            three: '',
-            four:  '',
-          },
-          secondSection: {
-            one: '',
-            two: '',
-          },
-          thirdSection: {
-            one: '',
-            two: '',
-          },
-          fourSection: {
-            one: '',
-            two: '',
-          },
-          fifthSection: {
-            one: '',
-            two: '',
-          }
-        },
-        deft: {
-          firstSection: {
-            one:   '',
-            two:   '',
-          },
-          secondSection: {
-            one: '',
-            two: '',
-          },
-          thirdSection: {
-            one: '',
-            two: '',
-          },
-          fourSection: {
-            one: '',
-            two: '',
-          },
-        },
-      },
-      inventory: {
-        1: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        2: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        3: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        4: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        5: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        6: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        7: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        8: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        9: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        10: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        11: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        12: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        13: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        14: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        15: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        16: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        17: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        18: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        19: {
-          slotOne: '',
-          slotTwo: '',
-        },
-        20: {
-          slotOne: '',
-          slotTwo: '',
-        },
-      },
-      notes: {
-        value: ''
-      }
-    });
+    this.characterSheet.reset();
     this.imageUrl = '';
     this.currentJob = '';
 

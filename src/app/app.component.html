@@ -1,4 +1,4 @@
-<ng-container *ngIf="!disableApp; else elseBlock">
+<ng-container *ngIf="!disableApp">
   <span class="tab-section">
     <span [ngClass]="{enabled: selectedSection === 'stats'}" (click)="selectedSection = 'stats'">STATS</span>
     <span [ngClass]="{enabled: selectedSection === 'traits'}" (click)="selectedSection = 'traits'">TRAITS</span>
@@ -413,7 +413,7 @@
         </span>
         <span class="load" onclick="document.querySelector('#hiddenInput').click()">LOAD</span>
         <span class="kill" (click)="kill()"><strong>KILL</strong></span>
-        <span class="version">v.0988B</span>
+        <span class="version">v.099B</span>
       </span>
       <textarea @enterLeave *ngIf="!showUtilities" id="value" formControlName="value"></textarea>
     </span>
@@ -422,8 +422,8 @@
   <input style='display: none' #fileUploadInput type='file' id='hiddenInput' accept=".json, application/json" (change)='loadCharacter($event)'>
 </ng-container>
 
-<ng-template #elseBlock>
+<!-- <ng-template #elseBlock>
   <span class="disabled-message">
     WHITEHACK LUX IS MEANT FOR PHONES ONLY
   </span>
-</ng-template>
+</ng-template> -->
