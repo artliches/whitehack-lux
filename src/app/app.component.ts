@@ -270,12 +270,86 @@ export class AppComponent implements OnInit {
     })
   });
   timer: any;
+  slotHighlightObject: any = {
+    wise: {
+      first: {
+        one: false,
+        two: false,
+        three: false,
+        fourth: false,
+        fifth: false,
+      },
+      second: {
+        one: false,
+        two: false,
+      },
+      third: {
+        one: false,
+        two: false,
+      },
+      fourth: {
+        one: false,
+        two: false,
+      },
+      fifth: {
+        one: false,
+        two: false,
+      }
+    },
+    deft: {
+      first: {
+        one: false,
+        two: false,
+      },
+      second: {
+        one: false,
+        two: false,
+      },
+      third: {
+        one: false,
+        two: false,
+      },
+      fourth: {
+        one: false,
+        two: false,
+      },
+    },
+  };
 
 
   ngOnInit(): void {
     this.resize();
     this.fillCharacterSheet();
+
     this.detectChanges();
+  }
+
+  setAttunements() {
+    if (this.currentJob) {
+      setTimeout(() => {
+        const slotObj = this.slotHighlightObject;
+        // iterate over obj
+        Object.keys(slotObj).forEach(job => {
+          const currJob = job;
+          // we have the current job, lets get the groups
+          if (currJob === this.currentJob) {
+            Object.keys(slotObj[currJob]).forEach(group => {
+              const currGroup = group;
+              // we have the currentGroup, lets check the slot value
+              Object.keys(slotObj[currJob][currGroup]).forEach(slot => {
+                const currSlot = slot;
+                if (slotObj[currJob][currGroup][currSlot]) {
+                  // group slot job
+                  this.renderer.addClass(document.getElementById(`${currGroup} ${currSlot} ${currJob}`), 'chosen');
+                }
+              })
+            })
+          }
+        });
+        
+      });
+    }
+
   }
 
   touchStart(event: any) {
@@ -297,6 +371,11 @@ export class AppComponent implements OnInit {
     const chosen = event.target.classList.contains('chosen');
     const children = this.renderer.parentNode(event.target).children;
 
+    const seek = event.target.id.split(' ');
+    const classSeek = seek[2] as keyof typeof this.slotHighlightObject;
+    const groupSeek = seek[0] as keyof typeof this.slotHighlightObject;
+    const slotSeek = seek[1] as keyof typeof this.slotHighlightObject;
+
     if (chosen) {
       this.renderer.removeClass(event.target, 'chosen');
     } else {
@@ -304,24 +383,14 @@ export class AppComponent implements OnInit {
       for (let i = 0; i < children.length; i++) {
         this.renderer.removeClass(children[i], 'chosen');
       }
+      // reset group in slotHighlightObject
+      for(const [key,value] of Object.entries(this.slotHighlightObject[classSeek][groupSeek])) {
+        this.slotHighlightObject[classSeek][groupSeek][key] = false;
+      }
       this.renderer.addClass(event.target, 'chosen');
-
-      // const parentId = this.renderer.parentNode(event.target).id;
-      // const targetId = event.target.id;
-
-      // this.characterSheet.patchValue({
-      //   attunements: {
-      //     [this.currentJob]: {
-      //       [parentId]: {
-      //         [targetId]: [event.target.value, true]
-      //       }
-      //     }
-      //   }
-      // });
-      
-      // console.log(this.characterSheet.value);
     }
-
+    this.slotHighlightObject[classSeek][groupSeek][slotSeek] = event.target.classList.contains('chosen');
+    this.setSheet(this.characterSheet.value);
   }
 
   kill() {
@@ -334,6 +403,51 @@ export class AppComponent implements OnInit {
     this.characterSheet.reset();
     this.imageUrl = '';
     this.currentJob = '';
+    this.slotHighlightObject = {
+      wise: {
+        first: {
+          one: false,
+          two: false,
+          three: false,
+          fourth: false,
+          fifth: false,
+        },
+        second: {
+          one: false,
+          two: false,
+        },
+        third: {
+          one: false,
+          two: false,
+        },
+        fourth: {
+          one: false,
+          two: false,
+        },
+        fifth: {
+          one: false,
+          two: false,
+        }
+      },
+      deft: {
+        first: {
+          one: false,
+          two: false,
+        },
+        second: {
+          one: false,
+          two: false,
+        },
+        third: {
+          one: false,
+          two: false,
+        },
+        fourth: {
+          one: false,
+          two: false,
+        },
+      },
+    };
 
     this.setSheet(this.characterSheet.value);
   }
@@ -545,6 +659,9 @@ export class AppComponent implements OnInit {
       if (init.currentJob) {
         this.currentJob = init.currentJob;
       }
+      if (init.chosenSlots) {
+        this.slotHighlightObject = JSON.parse(init.chosenSlots);
+      }
     }
   }
 
@@ -552,13 +669,17 @@ export class AppComponent implements OnInit {
     const saveObject = {
       img: this.imageUrl,
       currentJob: this.currentJob,
-      sheet: JSON.stringify(charSheet)
+      sheet: JSON.stringify(charSheet),
+      chosenSlots: JSON.stringify(this.slotHighlightObject),
     };
     window.localStorage.setItem('whitehack_sheet_lux', JSON.stringify(saveObject));
   }
 
   changeJob(chosenJob: string) {
     this.currentJob = chosenJob;
+    if (chosenJob !== 'strong') {
+      this.setAttunements();
+    }
     this.setSheet(this.characterSheet.value);
   }
 
@@ -572,7 +693,8 @@ export class AppComponent implements OnInit {
     const saveSheet = {
       img: this.imageUrl,
       currentJob: this.currentJob,
-      sheet: JSON.stringify(this.characterSheet.value)
+      sheet: JSON.stringify(this.characterSheet.value),
+      chosenSlots: JSON.stringify(this.slotHighlightObject)
     };
     const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(saveSheet));
     const dlAnchorElem = document.getElementById('downloadAnchorElem');
