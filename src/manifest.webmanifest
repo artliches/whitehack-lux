@@ -1,8 +1,8 @@
 {
   "name": "whitehack lux",
   "short_name": "WHLUX",
-  "theme_color": "red",
-  "background_color": "red",
+  "theme_color": "black",
+  "background_color": "black",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

@@ -22,23 +22,25 @@
             <label for="name">
               <strong>NAME</strong>
             </label>
-            <span class="title" (click)="showIcon = !showIcon">{{showIcon ? 'HIDE ICON' : 'SHOW ICON'}}</span>
+            <span class="title white-icon" (click)="showIcon = !showIcon">
+              {{showIcon ? 'HIDE PORTRAIT' : 'SHOW PORTRAIT'}}
+            </span>
           </span>
-          <input class="flat-input" id="name"type='text' formControlName="name" autocomplete="off">
+          <input tabindex="1" class="flat-input" id="name"type='text' formControlName="name" autocomplete="off">
         </span>
         <span class="double-column-layout horz">
           <span class="label-input-layout">
             <label for="species"><strong>SPECIES</strong></label>
-            <input class="flat-input"  id="species"type='text' formControlName="species" autocomplete="off">
+            <input tabindex="2" class="flat-input"  id="species"type='text' formControlName="species" autocomplete="off">
           </span>
           <span class="label-input-layout">
             <label for="vocation"><strong>VOCATION</strong></label>
-            <input class="flat-input"  id="vocation"type='text' formControlName="vocation" autocomplete="off">
+            <input tabindex="3" class="flat-input"  id="vocation"type='text' formControlName="vocation" autocomplete="off">
           </span>
         </span>
         <span class="label-input-layout">
           <label for="details"><strong>LANGUAGES, SPECIAL TRAITS, & MUSINGS</strong></label>
-          <textarea class="flat-input"  appTextareaAutosize id="details"type='text' formControlName="details" autocomplete="off"></textarea>
+          <textarea tabindex="4" class="flat-input"  appTextareaAutosize id="details"type='text' formControlName="details" autocomplete="off"></textarea>
         </span>
       </span>
     </span>
@@ -54,18 +56,18 @@
           <span formGroupName="xp" class="hit-point-layout">
             <span class="under-label">
               <label for="current">CURRENT</label>
-              <input id="current" type="number" formControlName="current" autocomplete="off">
+              <input tabindex="6" id="current" type="number" formControlName="current" autocomplete="off">
             </span>
             <span class="under-label">
               <label for="next">NEXT</label>
-              <input id="next" type="number" formControlName="next" autocomplete="off">
+              <input tabindex="7" id="next" type="number" formControlName="next" autocomplete="off">
             </span>
           </span>
         </span>
   
         <span class="card-input-layout level">
           <label class="main-label" for="level"><strong>LEVEL</strong></label>
-          <input id="level" type="number" formControlName="level" autocomplete="off">
+          <input tabindex="5" id="level" type="number" formControlName="level" autocomplete="off">
         </span>
   
         <span class="card-input-layout hp">
@@ -73,23 +75,23 @@
           <span formGroupName="hitPoints" class="hit-point-layout">
             <span class="under-label">
               <label for="current">CURRENT</label>
-              <input id="current" type="text" formControlName="current" autocomplete="off">
+              <input tabindex="8" id="current" type="text" formControlName="current" autocomplete="off">
             </span>
             <span class="under-label">
               <label for="max">MAX</label>
-              <input id="max" type="text" formControlName="max" autocomplete="off">
+              <input tabindex="9" id="max" type="text" formControlName="max" autocomplete="off">
             </span>
           </span>
         </span>
   
         <span class="card-input-layout ac">
           <label class="main-label" for="armorClass"><strong>ARMOR CLASS</strong></label>
-          <input id="armorClass" type="number" formControlName="armorClass" autocomplete="off">
+          <input tabindex="10" id="armorClass" type="number" formControlName="armorClass" autocomplete="off">
         </span>
   
         <span class="card-input-layout st">
           <label class="main-label" for="savingThrow"><strong>SAVING THROW</strong></label>
-          <input id="savingThrow" type="number" formControlName="savingThrow" autocomplete="off">
+          <input tabindex="11" id="savingThrow" type="number" formControlName="savingThrow" autocomplete="off">
         </span>
   
         <span class="card-input-layout av">
@@ -97,27 +99,27 @@
           <span formGroupName="attack" class="violence-layout">
             <span class="under-label">
               <label for="value">AV</label>
-              <input id="attackValue" type="number" formControlName="value" autocomplete="off">
+              <input tabindex="12" id="attackValue" type="number" formControlName="value" autocomplete="off">
             </span>
             <span class="under-label weapon-name">
               <label for="weapon">WEAPON NAME</label>
-              <input id="weaponName" type="text" formControlName="weapon" autocomplete="off">
+              <input tabindex="13" id="weaponName" type="text" formControlName="weapon" autocomplete="off">
             </span>
             <span class="under-label">
               <label for="dmg">DMG</label>
-              <input class="lowercase" id="dmg" type="text" formControlName="dmg" autocomplete="off">
+              <input tabindex="14" class="lowercase" id="dmg" type="text" formControlName="dmg" autocomplete="off">
             </span>
           </span>
         </span>
   
         <span class="card-input-layout mv">
           <label class="main-label" for="movement"><strong>MOVEMENT</strong></label>
-          <input id="movement" type="number" formControlName="movement" autocomplete="off">
+          <input tabindex="15" id="movement" type="number" formControlName="movement" autocomplete="off">
         </span>
   
         <span class="card-input-layout init">
           <label class="main-label" for="init"><strong>INITIATIVE</strong></label>
-          <input id="init" type="text" formControlName="init" autocomplete="off">
+          <input tabindex="16" id="init" type="text" formControlName="init" autocomplete="off">
         </span>
       </span>
     </span>
@@ -402,7 +404,14 @@
   
     <span @enterLeave *ngIf="selectedSection === 'notes'" formGroupName="notes" class="form-group-layout notes">
       <span class="utilities" (click)="showUtilities = !showUtilities">
-        <strong class="title">{{showUtilities ? 'HIDE UTILITIES' : 'SHOW UTILITIES'}}</strong>
+        <strong class="title white-icon">
+          <ng-container *ngIf="showUtilities; else hideUtilities">
+            <img src="../assets/icons/clipboard-regular.svg" />
+          </ng-container>
+          <ng-template #hideUtilities>
+            <img src="../assets/icons/gear-solid.svg" />
+          </ng-template>
+        </strong>
       </span>
   
       <span @enterLeave *ngIf="showUtilities" class="import-export-layout">

@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   @HostListener('document: scroll')
   hideIcon() {
-    if (this.showIcon) {
+    if (this.showIcon && this.icon) {
       const currCheck = this.icon.nativeElement.getBoundingClientRect().height;
       const currScroll = window.scrollY;
       let opacity = 1;

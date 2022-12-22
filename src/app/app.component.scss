@@ -16,6 +16,10 @@ label, .title {
     color: grey;
 }
 
+.white-icon {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(332deg) brightness(103%) contrast(102%);
+}
+
 .disabled-message {
     display: grid;
     place-content: center;
@@ -251,9 +255,12 @@ label, .title {
 
         &.notes {
             text-align: center;
-
             .utilities {
+                padding-top: 0.5rem;
                 strong.title {
+                    img {
+                        height: 2rem;
+                    }
                     font-size: 1rem;
                 }
             }
