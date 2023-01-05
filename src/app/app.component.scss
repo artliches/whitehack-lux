@@ -165,6 +165,7 @@ label, .title {
             .main {
                 grid-template-columns: repeat(2, 1fr);
                 .card-input-layout {
+                    grid-template-rows: auto 1fr;
                     .trait-layout {
                         input#value {
                             font-size: 2rem;
@@ -375,7 +376,7 @@ label, .title {
         .trait-layout {
             display: grid;
             grid-template-columns: 1fr;
-            grid-template-rows: 1fr repeat(2, auto);
+            grid-template-rows: repeat(3, min-content);
             grid-template-areas:
                 "value"
                 "g1"
