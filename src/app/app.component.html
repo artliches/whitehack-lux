@@ -17,7 +17,7 @@
       </span>
   
       <span #name formGroupName="identity" class="form-section">
-        <span class="label-input-layout">
+        <span class="label-input-layout name">
           <span class="name-label-section">
             <label for="name">
               <strong>NAME</strong>
@@ -28,17 +28,15 @@
           </span>
           <input tabindex="1" class="flat-input" id="name"type='text' formControlName="name" autocomplete="off">
         </span>
-        <span class="double-column-layout horz">
-          <span class="label-input-layout">
-            <label for="species"><strong>SPECIES</strong></label>
-            <input tabindex="2" class="flat-input"  id="species"type='text' formControlName="species" autocomplete="off">
-          </span>
-          <span class="label-input-layout">
-            <label for="vocation"><strong>VOCATION</strong></label>
-            <input tabindex="3" class="flat-input"  id="vocation"type='text' formControlName="vocation" autocomplete="off">
-          </span>
+        <span class="label-input-layout species">
+          <label for="species"><strong>SPECIES</strong></label>
+          <input tabindex="2" class="flat-input"  id="species"type='text' formControlName="species" autocomplete="off">
         </span>
-        <span class="label-input-layout">
+        <span class="label-input-layout vocation">
+          <label for="vocation"><strong>VOCATION</strong></label>
+          <input tabindex="3" class="flat-input"  id="vocation"type='text' formControlName="vocation" autocomplete="off">
+        </span>
+        <span class="label-input-layout details">
           <label for="details"><strong>LANGUAGES, SPECIAL TRAITS, & MUSINGS</strong></label>
           <textarea tabindex="4" class="flat-input"  appTextareaAutosize id="details"type='text' formControlName="details" autocomplete="off"></textarea>
         </span>
@@ -421,8 +419,18 @@
           </a>
         </span>
         <span class="load" onclick="document.querySelector('#hiddenInput').click()">LOAD</span>
+        <span class="hints">
+          <ul>
+            <li>
+              Tap on the image above the character name to change it.
+            </li>
+            <li>
+              Long-press on an attunement slot to mark it as active (doesn't work for STRONG).
+            </li>
+          </ul>
+        </span>
         <span class="kill" (click)="kill()"><strong>KILL</strong></span>
-        <span class="version">v.1</span>
+        <span class="version">v1.1</span>
       </span>
       <textarea @enterLeave *ngIf="!showUtilities" id="value" formControlName="value"></textarea>
     </span>
@@ -430,9 +438,3 @@
   
   <input style='display: none' #fileUploadInput type='file' id='hiddenInput' accept=".json, application/json" (change)='loadCharacter($event)'>
 </ng-container>
-
-<!-- <ng-template #elseBlock>
-  <span class="disabled-message">
-    WHITEHACK LUX IS MEANT FOR PHONES ONLY
-  </span>
-</ng-template> -->

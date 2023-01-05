@@ -20,17 +20,6 @@ label, .title {
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(332deg) brightness(103%) contrast(102%);
 }
 
-.disabled-message {
-    display: grid;
-    place-content: center;
-    text-align: center;
-    height: 100vh;
-    width: 100vw;
-    font-family: 'DM Serif', serif;
-    font-size: 2rem;
-    letter-spacing: 0.3rem;
-}
-
 .lowercase {
     text-transform: lowercase;
 }
@@ -66,15 +55,19 @@ label, .title {
     }
 }
 
+.sheet-layout, .form-section, .main, .form-group-layout {
+    display: grid;
+}
+
 .sheet-layout {
     padding-top: 14px;
     height: 100%;
-    display: grid;
-    place-content: center;
     grid-gap: $gap;
+    place-content: center;
 
     input {
         width: 100%;
+        border: none;
     }
 
     textarea {
@@ -85,270 +78,17 @@ label, .title {
         border: none;
     }
 
-    .flat-input {
-        background-color: black;
-        border: none;
-        border-bottom: 1px solid grey;
-        color: white;
-    }
-
-    .form-group-layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: $gap;
-
-        .main {
-            display: grid;
-            grid-gap: $gap;
-        }
-
-        &.identity {
-            max-width: 100%;
-            width: 96vw;
-            display: grid;
-            grid-template-rows: repeat(2, auto);
-
-            .form-section {
-                .name-label-section {
-                    display: grid;
-                    grid-template-columns: 1fr auto;
-                    grid-template-rows: 1fr;
-                }
-            }
-        }
-
-        &.stats {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto 1fr;
-            .main {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-areas: 
-                    "lvl    xp"
-                    "hp     hp"
-                    "ac     st"
-                    "av     av"
-                    "mv     init";
-                .xp {
-                    grid-area: xp;
-                    input {
-                        font-size: 1rem;
-                    }
-                }
-                .level {
-                    grid-area: lvl;
-                }
-                .hp {
-                    grid-area: hp;
-                }
-                .ac {
-                    grid-area: ac;
-                }
-                .st {
-                    grid-area: st;
-                }
-                .av {
-                    grid-area: av;
-                }
-                .mv {
-                    grid-area: mv;
-                }
-                .init {
-                    grid-area: init;
-                }
-            }
-        }
-
-        &.traits {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto 1fr;
-
-            .main {
-                grid-template-columns: repeat(2, 1fr);
-                .card-input-layout {
-                    grid-template-rows: auto 1fr;
-                    .trait-layout {
-                        input#value {
-                            font-size: 2rem;
-                        }
-                        textarea {
-                            background-color: white;
-                            color: black;
-                            font-family: 'Poppins', sans-serif;
-                            text-align: center;
-                            letter-spacing: 0.3rem;
-                            resize: none;
-                            width: 100%;
-                        }
-                    }
-                }
-            }
-        }
-
-        &.attunements {
-            textarea {
-                background-color: rgb(40, 40, 40);
-                color: white;
-                width: 99%;
-            }
-
-            .main {
-                grid-template-columns: 1fr;
-                .job-shuffle {
-                    background-color: rgb(40, 40, 40);
-                    color: grey;
-                    display: flex;
-                    flex-direction: row;
-                    gap: 1rem;
-                    place-content: center;
-                    .title {
-                        font-size: 0.8rem;
-                    }
-                    .enabled {
-                        color: white;
-                    }
-                }
-                .attunement-section {
-                    .chosen {
-                        background-color: white;
-                        color: black;
-                    }
-                }
-                .multi-slot-section {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
-                    .section-group {
-                        padding: 1px 1px 1rem 1px;
-                        border-bottom: 1px solid white;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 0.5rem;
-                    }
-                }
-            }
-        }
-
-        &.inventory {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto 1fr;
-
-            .main {
-                .inventory-layout {
-                    display: grid;
-                    grid-template-columns: 5% 1fr;
-                    label {
-                        place-self: center start;
-                    }
-    
-                    .inventory-slots-layout {
-                        display: grid;
-                        grid-template-columns: repeat(2, 49%);
-                        textarea {
-                            text-align: center;
-                            font-family: 'Poppins', sans-serif;
-                            resize: none;
-                            width: 100%;
-                        }
-                    }
-                }
-            }
-        }
-
-        &.notes {
-            text-align: center;
-            .utilities {
-                padding-top: 0.5rem;
-                strong.title {
-                    img {
-                        height: 2rem;
-                    }
-                    font-size: 1rem;
-                }
-            }
-            .import-export-layout {
-                width: 100%;
-                height: 85vh;
-
-                display: grid;
-                font-family: 'Poppins Bold', sans-serif;
-                font-size: 0.9rem;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, 1fr) auto;
-                grid-template-areas:
-                    "save   load"
-                    "kill   kill"
-                    "ver    ver";
-                grid-gap: 1rem;
-                place-content: center;
-
-                .save {
-                    grid-area: save;
-                    place-self: start center;
-                }
-                .load {
-                    grid-area: load;
-                    place-self: start center;
-                }
-                .kill {
-                    letter-spacing: 0.3rem;
-                    grid-area: kill;
-                    font-size: 1.5rem;
-                    place-self: end center;
-                    font-family: 'DM Serif', serif;
-                    color: rgb(254, 47, 47);
-                }
-                .version {
-                    grid-area: ver;
-                    color: grey;
-                    font-size: 0.6rem;
-                }
-                
-            }
-            textarea {
-                height: 89vh;
-                width: 95vw;
-                border: 1px solid white;
-                resize: none;
-            }
-        }
-    }
-
-    .double-column-layout {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        grid-template-rows: 1fr;
-        &.card {
-            grid-gap: $gap;
-        }
-    }
-
-    .label-input-layout {
-        display: flex;
-        flex-direction: column;
-
-        input {
-            font-family: 'Poppins', sans-serif;
-            text-transform: capitalize;
-
-            &#name {
-                font-family: 'DM Serif', serif;
-                font-size: 2rem;
-                letter-spacing: 0.3rem;
-            }
-        }
-
-        textarea {
-            font-family: 'Poppins', sans-serif;
-            resize: none;
-        }
-    }
-
     .card-input-layout {
         background-color: white;
         color: grey;
         display: grid;
         place-content: stretch;
         padding: 1rem;
+        input, textarea {
+            background-color: white;
+            color: black;
+            border: none;
+        }
 
         .hit-point-layout {
             display: flex;
@@ -413,6 +153,246 @@ label, .title {
             }
             input {
                 place-self: center;
+            }
+        }
+    }
+
+    .flat-input {
+        background-color: black;
+        border: none;
+        border-bottom: 1px solid grey;
+        color: white;
+    }
+
+    .form-group-layout {
+        grid-gap: $gap;
+        grid-template-rows: auto 1fr;
+        max-width: 100%;
+        width: 96vw;
+        .icon-section, .title {
+            place-self: center;
+        }
+
+        .form-section {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas:
+                "name       name"
+                "species    vocation"            
+                "details    details";
+            .name {
+                grid-area: name;
+            }
+            .species {
+                grid-area: species;
+            }
+            .vocation {
+                grid-area: vocation;
+            }
+            .details {
+                grid-area: details;
+            }
+        }
+
+        .label-input-layout {
+            display: flex;
+            flex-direction: column;
+            input {
+                font-family: 'Poppins', sans-serif;
+                text-transform: capitalize;
+
+            &#name {
+                font-family: 'DM Serif', serif;
+                font-size: 2rem;
+                letter-spacing: 0.3rem;
+            }
+        }
+            .name-label-section {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-template-rows: 1fr;
+            }
+        }
+
+        &.stats {
+            .main {
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: $gap;
+                grid-template-areas:
+                    "lvl        xp"
+                    "hp         hp"
+                    "ac         st"
+                    "av         av"
+                    "mv         init";
+                .xp {
+                    grid-area: xp;     
+                    input {
+                        font-size: 1rem;
+                    }               
+                }
+                .level {
+                    grid-area: lvl;
+                }
+                .hp {
+                    grid-area: hp;
+                }
+                .ac {
+                    grid-area: ac;
+                }
+                .st {
+                    grid-area: st;
+                }
+                .mv {
+                    grid-area: mv;
+                }
+                .init {
+                    grid-area: init;
+                }
+                .av {
+                    grid-area: av;
+                }
+            }
+        }
+        &.traits {
+            .main {
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: $gap;
+                .card-input-layout {
+                    grid-template-rows: repeat(3, min-content);
+                }
+            }
+        }
+        &.attunements {
+            textarea {
+                background-color: rgb(40, 40, 40);
+                color: white;
+                width: 99%;
+            }
+
+            .main {
+                grid-template-columns: 1fr;
+                .job-shuffle {
+                    background-color: rgb(40, 40, 40);
+                    color: grey;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 1rem;
+                    place-content: center;
+                    margin-bottom: $gap;
+                    .title {
+                        font-size: 0.8rem;
+                    }
+                    .enabled {
+                        color: white;
+                    }
+                }
+                .attunement-section {
+                    .chosen {
+                        background-color: white;
+                        color: black;
+                    }
+                }
+                .multi-slot-section {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    .section-group {
+                        padding: 1px 1px 1rem 1px;
+                        border-bottom: 1px solid white;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                    }
+                }
+            }
+        }
+        &.inventory {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+
+            .main {
+                .inventory-layout {
+                    display: grid;
+                    grid-template-columns: 5% 1fr;
+                    label {
+                        place-self: center start;
+                    }
+    
+                    .inventory-slots-layout {
+                        display: grid;
+                        grid-template-columns: repeat(2, 49%);
+                        textarea {
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+        &.notes {
+            text-align: center;
+            .utilities {
+                padding-top: 0.5rem;
+                strong.title {
+                    img {
+                        height: 2rem;
+                    }
+                    font-size: 1rem;
+                }
+            }
+            .import-export-layout {
+                width: 100%;
+                height: 85vh;
+
+                display: grid;
+                font-family: 'Poppins Bold', sans-serif;
+                font-size: 0.9rem;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr) auto;
+                grid-template-areas:
+                    "save   load"
+                    "hints  hints"
+                    "kill   kill"
+                    "ver    ver";
+                grid-gap: 1rem;
+                place-content: center;
+
+                .save {
+                    grid-area: save;
+                    place-self: start center;
+                }
+                .load {
+                    grid-area: load;
+                    place-self: start center;
+                }
+                .kill {
+                    letter-spacing: 0.3rem;
+                    grid-area: kill;
+                    font-size: 1.5rem;
+                    place-self: end center;
+                    font-family: 'DM Serif', serif;
+                    color: rgb(254, 47, 47);
+                }
+                .hints {
+                    grid-area: hints;
+                    display: grid;
+                    place-content: center;
+                    font-family: 'Poppins', sans-serif;
+                    ul {
+                        list-style: none;
+                        background-color: rgb(32, 32, 32);
+                    }
+                }
+                .version {
+                    grid-area: ver;
+                    color: grey;
+                    font-size: 0.6rem;
+                }
+                
+            }
+            textarea {
+                height: 89vh;
+                width: 95vw;
+                border: 1px solid white;
+                resize: none;
             }
         }
     }
