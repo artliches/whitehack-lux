@@ -2,19 +2,19 @@
     <form class="info-section" [formGroup]="identityForm">
         <span class="standard-input label-input-layout name">
             <label for="name">NAME</label>
-            <input id="name" type="text" formControlName="name">
+            <input autocomplete="off" spellcheck="false" id="name" type="text" formControlName="name">
         </span>
         <span class="standard-input label-input-layout">
             <label for="species">SPECIES</label>
-            <input id="species" type="text" formControlName="species">
+            <input autocomplete="off" spellcheck="false" id="species" type="text" formControlName="species">
         </span>
         <span class="standard-input label-input-layout">
             <label for="vocation">VOCATION</label>
-            <input id="vocation" type="text" formControlName="vocation">
+            <input autocomplete="off" spellcheck="false" id="vocation" type="text" formControlName="vocation">
         </span>
         <span class="standard-input label-input-layout extras">
             <label for="extras">LANGUAGES, SPECIAL TRAITS, & MUSINGS</label>
-            <textarea appTextareaAutosize id="extras" type="text" formControlName="extras"></textarea>
+            <textarea spellcheck="false" appTextareaAutosize id="extras" type="text" formControlName="extras"></textarea>
         </span>
     </form>
 </span>

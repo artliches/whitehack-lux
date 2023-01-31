@@ -1,52 +1,57 @@
 .sheet-layout {
-    width: 65vw;
     margin: auto;
     height: 100%;
     display: grid;
-    place-content: center;
-    grid-template-columns: repeat(2, 50%);
-    grid-template-rows: repeat(8, min-content);
-    grid-gap: 1rem;
+}
 
-    padding: 0 2rem;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-
-    .identity {
-        // row-start / col-start / row-end / col-end
-        grid-row: 1 / 4;
-        grid-column: 1;
-    }
-    .pics {
-        grid-row: 1 / 4;
-        grid-column: 2;
-    }
-    .stats {
-        grid-row: 3;
-        grid-column: 1 / span 2;
-    }
-    .traits {
-        grid-row: 4;
-        grid-column: 1 / span 2;
-    }
-    .attunements {
-        grid-row: 5;
-        grid-column: 1;
-    }
-    .inventory {
-        grid-row: 5;
-        grid-column: 2;
-    }
-    .minor-stats {
-        grid-row: 6;
-        grid-column: 1 / span 2;
-    }
-    .notes {
-        grid-row: 7;
-        grid-column: 1 / span 2;
-    }
-    .utilities {
-        grid-row: 8;
-        grid-column: 1 / span 2;
+@media screen and (min-width: 1024px) {
+    .sheet-layout {
+        width: 65vw;
+        place-content: center;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: repeat(8, min-content);
+        grid-gap: 1rem;
+    
+        padding: 0 2rem;
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+    
+        .identity {
+            // row-start / col-start / row-end / col-end
+            grid-row: 1 / 4;
+            grid-column: 1;
+        }
+        .pics {
+            grid-row: 1 / 4;
+            grid-column: 2;
+        }
+        .stats {
+            grid-row: 3;
+            grid-column: 1 / span 2;
+        }
+        .traits {
+            grid-row: 4;
+            grid-column: 1 / span 2;
+        }
+        .attunements {
+            grid-row: 5;
+            grid-column: 1;
+        }
+        .inventory {
+            grid-row: 5;
+            grid-column: 2;
+        }
+        .minor-stats {
+            grid-row: 6;
+            grid-column: 1 / span 2;
+        }
+        .notes {
+            grid-row: 7;
+            grid-column: 1 / span 2;
+        }
+        .utilities {
+            grid-row: 8;
+            grid-column: 1 / span 2;
+        }
     }
 }

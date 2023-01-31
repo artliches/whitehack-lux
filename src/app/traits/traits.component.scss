@@ -9,9 +9,12 @@ form {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        input {
+            font-size: 2vw;
+        }
     }
     textarea {
-        font-size: .8rem;
+        font-size: .85vw;
         text-align: center;
         text-transform: capitalize;
         border-bottom: 1px solid rgb(151, 151, 151);

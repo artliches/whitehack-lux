@@ -1,3 +1,7 @@
+// * {
+//     box-sizing: border-box;
+// }
+
 @font-face {
     font-family: "Poppins";
     src: local("Poppins"), url(./assets/fonts/Poppins-Regular.ttf) format('opentype');
@@ -82,7 +86,7 @@ textarea {
     label {
         color: rgb(151, 151, 151);
         font-family: 'Poppins Bold', sans-serif;
-        font-size: .7rem;
+        font-size: .7vw;
     }
     input {
         text-transform: capitalize;
@@ -100,16 +104,20 @@ textarea {
     &.white-box-layout {
         background-color: white;
         padding: 1rem;
+        align-self: start;
         label {
             place-self: center;
             text-align: center;
         }
-        input {
+        input, textarea {
+            width: min-content;
             place-self: center;
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.5vw;
+            // font-size: .5rem;
+
             font-family: 'DM Serif', serif;
-            letter-spacing: .5rem;
+            letter-spacing: .5vw;
         }
     }
 }
@@ -122,6 +130,8 @@ textarea {
 .double-column {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 1vw;
     justify-content: center;
 }
+
+// @media screen and (min-width: )

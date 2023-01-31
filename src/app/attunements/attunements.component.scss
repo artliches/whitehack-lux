@@ -14,7 +14,7 @@ form {
     .attunement-section {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.5vw;
 
         .chosen {
             background-color: white;
@@ -24,12 +24,12 @@ form {
         &.multi-slot-section {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.5vw;
             .section-group {
                 display: flex;
                 flex-direction: column;
-                gap: 0.5rem;
-                padding-bottom: 0.5rem;
+                gap: 0.5vw;
+                padding-bottom: 0.5vw;
                 border-bottom: 1px solid white;
             }
         }
@@ -44,8 +44,8 @@ form {
         input {
             text-align: center;
             font-family: 'DM Serif', serif;
-            font-size: 1.3rem;
-            letter-spacing: .5rem;
+            font-size: 1.3vw;
+            letter-spacing: .5vw;
         }
 
         &.current, &.max {
