@@ -1,0 +1,6 @@
+<span class="pic-section clickable">
+    <a onclick="document.querySelector('#hiddenImageInput').click()">
+        <img id="icon" [src]="imageUrl || '/assets/icons/dice.png'" alt="" />
+    </a>
+    <input style="display: none" #imageUploadInput type="file" id="hiddenImageInput" accept="image/*" (change)="imageUpload($event)">
+</span>

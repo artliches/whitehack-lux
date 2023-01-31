@@ -1,0 +1,51 @@
+<form [formGroup]="statsForm">
+    <span class="standard-input white-box-layout">
+        <label for="hp">HP</label>
+        <span class="double-column" formGroupName="hp">
+            <span class="under-label">
+                <label for="current">CURRENT</label>
+                <input appInputAutosize id="current" type="text" formControlName="current" autocomplete="off">
+            </span>
+            <span class="divider">
+                /
+            </span>
+            <span class="under-label">
+                <label for="max">MAX</label>
+                <input appInputAutosize id="max" type="text" formControlName="max" autocomplete="off">
+            </span>
+        </span>
+    </span>
+    <span class="standard-input white-box-layout">
+        <label for="ac">ARMOR CLASS</label>
+        <input appInputAutosize id="ac" type="text" formControlName="ac">
+    </span>
+    <span class="standard-input white-box-layout">
+        <label for="st">SAVING THROW</label>
+        <input appInputAutosize id="st" type="text" formControlName="st">
+    </span>
+    <span class="standard-input white-box-layout">
+        <label for="violence">VIOLENCE</label>
+        <span class="double-column" formGroupName="violence">
+            <span class="under-label">
+                <label for="current">AV</label>
+                <input appInputAutosize id="av" type="number" formControlName="av" autocomplete="off">
+            </span>
+            <span class="under-label">
+                <label for="weapon">WEAPON NAME</label>
+                <input appInputAutosize id="weapn" type="text" formControlName="weapon" autocomplete="off">
+            </span>
+            <span class="under-label">
+                <label for="dmg">DMG</label>
+                <input appInputAutosize id="dmg" type="text" formControlName="dmg" autocomplete="off">
+            </span>
+        </span>
+    </span>
+    <span class="standard-input white-box-layout">
+        <label for="mv">MOVEMENT</label>
+        <input appInputAutosize id="mv" type="number" formControlName="mv">
+    </span>
+    <span class="standard-input white-box-layout">
+        <label for="init">INITIATIVE</label>
+        <input appInputAutosize id="init" type="text" formControlName="init">
+    </span>
+</form>

@@ -1,0 +1,23 @@
+<span class="dark-layout">
+    <span class="title white-icon">
+        <img (click)="showUtilities = !showUtilities" class="clickable" src="/assets/icons/gear-solid.svg" />
+    </span>
+    <span *ngIf="showUtilities" class="info-section">
+        <span class="save-load-layout">
+            <a class="save" (click)="save()" id="downloadAnchorElem">
+                <strong class="utility-button clickable">SAVE</strong>
+            </a>
+            <strong onclick="document.querySelector('#hiddenInput').click()" class="utility-button clickable">LOAD</strong>
+        </span>
+
+        <span class="kill-layout">
+            <strong (click)="kill()" *ngIf="!killToggle" class="utility-button kill clickable">KILL</strong>
+            <strong *ngIf="killToggle" class="utility-button kill">ARE YOU SURE?</strong>
+            <span class="yes-no-layout" *ngIf="killToggle">
+                <strong (click)="kill()" class="ultility-button clickable">YES</strong>
+                <strong (click)="goBack()" class="ultility-button clickable">NO</strong>
+            </span>
+        </span>
+    </span>
+</span>
+<input style='display: none' #fileUploadInput type='file' id='hiddenInput' accept=".json, application/json" (change)='load($event)'>

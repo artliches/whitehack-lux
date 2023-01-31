@@ -1,0 +1,8 @@
+<form [formGroup]="notesForm" class="dark-layout">
+    <label class="title">
+        <span (click)="showNotes = !showNotes" class="clickable">
+            NOTES
+        </span>
+    </label>
+    <textarea id="notes" formControlName="notes" *ngIf="showNotes" appTextareaAutosize ></textarea>
+</form>

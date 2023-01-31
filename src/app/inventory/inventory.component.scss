@@ -1,0 +1,22 @@
+.inventory-layout {
+    display: grid;
+    grid-gap: 0.5rem;
+    .individual-layout {
+        display: grid;
+        grid-template-columns: 5% auto;
+        label {
+            text-align: center;
+            font-size: 0.7rem;
+            font-family: 'Poppins', sans-serif;
+            padding-top: 0.4rem;
+            color: grey;
+        }
+    }
+    .inventory-slots-layout {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        textarea {
+            border-bottom: 1px solid white;
+        }
+    }
+}

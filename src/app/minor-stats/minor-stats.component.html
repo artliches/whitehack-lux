@@ -1,0 +1,22 @@
+<form [formGroup]="minorStatsForm">
+    <span class="standard-input level">
+        <label for="level">LEVEL</label>
+        <input appInputAutosize id="level" type="number" formControlName="level">
+    </span>
+    <span class="standard-input xp">
+        <label for="xp">XP</label>
+        <span class="double-column" formGroupName="xp">
+            <span class="under-label">
+                <label for="current">CURRENT</label>
+                <input appInputAutosize id="current" type="number" formControlName="current" autocomplete="off">
+            </span>
+            <span class="divider">
+                /
+            </span>
+            <span class="under-label">
+                <label for="next">NEXT</label>
+                <input appInputAutosize id="next" type="number" formControlName="next" autocomplete="off">
+            </span>
+        </span>
+    </span>
+</form>

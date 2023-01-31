@@ -1,0 +1,18 @@
+.info-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, min-content);
+    row-gap: 1rem;
+    .name {
+        // row-start / col-start / row-end / col-end
+        grid-area: 1 / span 2;
+        input {
+            font-size: 2.5rem;
+            font-family: 'DM Serif', serif;
+            letter-spacing: .5rem;
+        }
+    }
+    .extras {
+        grid-area: 3 / span 2;
+    }
+}

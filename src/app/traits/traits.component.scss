@@ -1,0 +1,19 @@
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+}
+.standard-input {
+    .single-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    textarea {
+        font-size: .8rem;
+        text-align: center;
+        text-transform: capitalize;
+        border-bottom: 1px solid rgb(151, 151, 151);
+    }
+}

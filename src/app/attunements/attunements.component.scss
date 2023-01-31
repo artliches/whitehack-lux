@@ -1,0 +1,57 @@
+form {
+    .title{
+        &.enabled {
+            color: white;
+        }
+    }
+
+    .job-shuffle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .attunement-section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .chosen {
+            background-color: white;
+            color: black;
+        }
+
+        &.multi-slot-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            .section-group {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 1px solid white;
+            }
+        }
+    }
+}
+
+.standard-input {
+    display: grid;
+    grid-template-columns: auto 10% 10%;
+    column-gap: 0.5rem;
+    .under-label {
+        input {
+            text-align: center;
+            font-family: 'DM Serif', serif;
+            font-size: 1.3rem;
+            letter-spacing: .5rem;
+        }
+
+        &.current, &.max {
+            label {
+                text-align: center;
+            }
+        }
+    }
+}
