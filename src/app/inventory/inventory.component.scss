@@ -11,12 +11,23 @@
             padding-top: 0.4rem;
             color: grey;
         }
+
     }
     .inventory-slots-layout {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         textarea {
             border-bottom: 1px solid white;
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .inventory-layout {
+        .inventory-slots-layout {
+            textarea {
+                width: 14.5vw;
+            }
         }
     }
 }

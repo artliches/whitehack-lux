@@ -17,6 +17,7 @@ form {
         .slot-instructions {
             font-size: .7rem;
             color: gray;
+            text-transform: uppercase;
         }
     }
 
@@ -77,6 +78,7 @@ form {
             input {
                 font-size: 1.3vw;
                 letter-spacing: .5vw;
+                width: 24vw;
             }
             label {
                 font-size: 0.7vw;

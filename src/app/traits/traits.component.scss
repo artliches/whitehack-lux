@@ -15,7 +15,7 @@ form {
         }
     }
     textarea {
-        font-size: .65rem;
+        font-size: .5rem;
         text-align: center;
         text-transform: capitalize;
         border-bottom: 1px solid rgb(151, 151, 151);
@@ -24,7 +24,7 @@ form {
 @media screen and (min-width: 375px) {
     .standard-input {
         textarea {
-            font-size: .7rem;
+            font-size: .6rem;
         }
     }
 }
@@ -51,6 +51,7 @@ form {
         }
         textarea {
             font-size: .85vw;
+            width: 10vw;
         }
     }
 }
