@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1675404689151,
+  "timestamp": 1675405992450,
   "index": "/whitehack-lux/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/whitehack-lux/favicon.ico",
         "/whitehack-lux/index.html",
-        "/whitehack-lux/main.43e47aa781e8047b.js",
+        "/whitehack-lux/main.800f7551719b2499.js",
         "/whitehack-lux/manifest.webmanifest",
         "/whitehack-lux/polyfills.3c21a2460665d8ab.js",
         "/whitehack-lux/runtime.fd1323c782535571.js",
@@ -70,8 +70,8 @@
     "/whitehack-lux/assets/icons/favicon-32x32.png": "2868babc20f2d78a65ed12c7d02477c31632b4c3",
     "/whitehack-lux/assets/icons/gear-solid.svg": "f2dcf1edb5e3ccebfa89f9fafa04ca4d655c3231",
     "/whitehack-lux/favicon.ico": "29c7575678805c27bc891f6e598b4159d39ac0a5",
-    "/whitehack-lux/index.html": "ff3b1cddfef6b3c8b5afb15706f4dfd20cbc244f",
-    "/whitehack-lux/main.43e47aa781e8047b.js": "513791b0765eddd046f32f5213667cd2a0cd72d3",
+    "/whitehack-lux/index.html": "6df1daa5a9172f6c261470b229287c65463d239b",
+    "/whitehack-lux/main.800f7551719b2499.js": "ec53339db5b8224235bc6b983ed4a9153c9fd2cf",
     "/whitehack-lux/manifest.webmanifest": "a90ec3c0a0b14b193407a18d68d64557c3a38f71",
     "/whitehack-lux/polyfills.3c21a2460665d8ab.js": "478b1fbc4908a857117a83e210dd72657a1d28d6",
     "/whitehack-lux/runtime.fd1323c782535571.js": "03ed156d3a19b05fece8fd2d1ece5517b1e8495f",
