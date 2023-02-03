@@ -47,6 +47,12 @@ textarea {
     font-family: 'Poppins', sans-serif;
     resize: none;
 }
+
+a, a:visited, a:active {
+    text-decoration: none;
+    color: white;
+}
+
 .clickable {
     cursor: pointer;
     user-select: none;

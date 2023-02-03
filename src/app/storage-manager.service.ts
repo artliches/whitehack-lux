@@ -54,7 +54,7 @@ export class StorageManagerService {
 
     const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(saveObj));
     const dlAnchorElem = document.getElementById('downloadAnchorElem');
-    const title = `${name.toUpperCase()}_SHEET` || 'UNNAMED_SHEET'
+    const title = name ? `${name.toUpperCase()}_SHEET` : 'UNNAMED_SHEET'
 
     if (dlAnchorElem) {
       dlAnchorElem.setAttribute('href', dataStr);

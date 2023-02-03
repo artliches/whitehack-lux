@@ -16,6 +16,7 @@ form {
         }
         .slot-instructions {
             font-size: .7rem;
+            color: gray;
         }
     }
 
@@ -55,6 +56,9 @@ form {
             font-size: 1rem;
             letter-spacing: .5rem;
         }
+        label {
+            font-size: 0.5rem;
+        }
 
         &.current, &.max {
             input {
@@ -73,6 +77,9 @@ form {
             input {
                 font-size: 1.3vw;
                 letter-spacing: .5vw;
+            }
+            label {
+                font-size: 0.7vw;
             }
             &.current, &.max {
                 input {
