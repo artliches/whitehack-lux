@@ -7,8 +7,16 @@ form {
 
     .job-shuffle {
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        flex-direction: column;
+        text-align: center;
+        .shuffle-layout {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .slot-instructions {
+            font-size: .7rem;
+        }
     }
 
     .attunement-section {

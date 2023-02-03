@@ -4,9 +4,12 @@
     </span>
 
     <span *ngIf="showAttunements" class="job-shuffle">
-        <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'deft'}" (click)="changeJob('deft')">DEFT</strong>
-        <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'strong'}" (click)="changeJob('strong')">STRONG</strong>
-        <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'wise'}" (click)="changeJob('wise')">WISE</strong>
+        <span class="shuffle-layout">
+          <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'deft'}" (click)="changeJob('deft')">DEFT</strong>
+          <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'strong'}" (click)="changeJob('strong')">STRONG</strong>
+          <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'wise'}" (click)="changeJob('wise')">WISE</strong>
+        </span>
+        <span class="slot-instructions" *ngIf="currentJob === 'wise' || currentJob === 'deft'">double-click/long-press a slot to highlight it</span>
     </span>
 
     <span class="attunement-section"
