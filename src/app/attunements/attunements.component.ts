@@ -1,4 +1,3 @@
-import { formatNumber } from '@angular/common';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { StorageManagerService } from '../storage-manager.service';

@@ -18,6 +18,27 @@
         grid-template-columns: repeat(2, 1fr);
         textarea {
             border-bottom: 1px solid white;
+            width: 48vw;
+        }
+    }
+}
+
+@media screen and (min-width: 375px) {
+    .inventory-layout {
+        .inventory-slots-layout {
+            textarea {
+                width: 43.3vw;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 810px) {
+    .inventory-layout {
+        .inventory-slots-layout {
+            textarea {
+                width: 42vw;
+            }
         }
     }
 }

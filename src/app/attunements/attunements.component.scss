@@ -72,6 +72,27 @@ form {
     }
 }
 
+@media screen and (min-width: 360px) {
+    .standard-input {
+        .under-label {
+            input {
+                width: 77vw;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 810px) {
+    .standard-input {
+        .under-label {
+            input {
+                width: 69vw;
+            }
+        }
+    }
+}
+
+
 @media screen and (min-width: 1440px) {
     .standard-input {
         .under-label {
@@ -89,6 +110,5 @@ form {
                 }
             }
         }
-
     }
 }
