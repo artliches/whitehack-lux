@@ -66,11 +66,28 @@
     }
 }
 
+@media screen and (min-width: 1024px) {
+    .sheet-layout {
+        .attunements {
+            grid-row: 7;
+            grid-column: 1;
+        }
+        .inventory {
+            grid-row: 7;
+            grid-column: 2;
+        }
+        .notes {
+            grid-row: 8;
+        }
+        .utilities {
+            grid-row: 9;
+        }
+    }
+}
+
 @media screen and (min-width: 1440px) {
     .sheet-layout {
         width: 65vw;
-        // grid-template-rows: repeat(8, min-content);
-
         .identity {
             // row-start / col-start / row-end / col-end
             grid-row: 1 / 4;

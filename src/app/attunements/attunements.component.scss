@@ -76,13 +76,23 @@ form {
     .standard-input {
         .under-label {
             input {
-                width: 77vw;
+                width: 65vw;
             }
         }
     }
 }
 
-@media screen and (min-width: 810px) {
+@media screen and (min-width: 425px) {
+    .standard-input {
+        .under-label {
+            input {
+                width: 70vw;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
     .standard-input {
         .under-label {
             input {
@@ -92,6 +102,21 @@ form {
     }
 }
 
+@media screen and (min-width: 1024px) {
+    .standard-input {
+        .under-label {
+            input {
+                width: 32.7vw;
+            }
+            &.current, &.max {
+                input {
+                    width: unset;
+                }
+            }
+        }
+
+    }
+}
 
 @media screen and (min-width: 1440px) {
     .standard-input {
@@ -103,11 +128,6 @@ form {
             }
             label {
                 font-size: 0.7vw;
-            }
-            &.current, &.max {
-                input {
-                    width: unset;
-                }
             }
         }
     }

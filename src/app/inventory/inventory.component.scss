@@ -23,11 +23,31 @@
     }
 }
 
+@media screen and (min-width: 360px) {
+    .inventory-layout {
+        .inventory-slots-layout {
+            textarea {
+                width: 42vw;
+            }
+        }
+    }
+}
+
 @media screen and (min-width: 375px) {
     .inventory-layout {
         .inventory-slots-layout {
             textarea {
-                width: 43.3vw;
+                width: 40vw;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 425px) {
+    .inventory-layout {
+        .inventory-slots-layout {
+            textarea {
+                width: 44vw;
             }
         }
     }
@@ -38,6 +58,16 @@
         .inventory-slots-layout {
             textarea {
                 width: 42vw;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .inventory-layout {
+        .inventory-slots-layout {
+            textarea {
+                width: 20vw;
             }
         }
     }
