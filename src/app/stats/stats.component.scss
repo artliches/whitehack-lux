@@ -1,19 +1,93 @@
 
 form {
-    z-index: 2;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1vw;
-
-    // display: grid;
-    // grid-template-columns: repeat(auto-fit, min-content);
-    // grid-auto-rows: min-content;
-    // grid-gap: 1rem;
-    // max-width: 100vw;
-
     .divider {
         color: #979797;
         margin-top: 0.4rem;
+    }
+    z-index: 2;
+    display: grid;
+    grid-gap: 1rem;
+    place-content: center;
+    grid-auto-columns: min-content;
+    grid-auto-rows: min-content;
+    grid-template-areas:
+        "hp     hp"
+        "st     ac"
+        "mv     init"
+        "vio    vio";
+
+    .ac {
+        grid-area: ac;
+    }
+    .st {
+        grid-area: st;
+    }
+    .violence {
+        grid-area: vio;
+        input, textarea {
+            font-size: 1rem;
+        }
+        textarea {
+            text-transform: capitalize;
+        }
+    }
+    .mv {
+        grid-area: mv;
+    }
+    .hp {
+        grid-area: hp;
+        .double-column {
+            justify-content: center;
+        }
+        .divider, input {
+            font-size: 2rem;
+        }
+    }
+    .init {
+        grid-area: init;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    .violence {
+        input, textarea {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+@media screen and (min-width: 425px) {
+    form {
+        grid-template-areas: 
+            "hp     hp      hp       hp"
+            "init   st      ac       mv"
+            "vio    vio     vio      vio";
+        .violence {
+            input, textarea {
+                font-size: 1.3rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    form {
+        grid-template-areas:
+            "mv     ac      hp      st      init"
+            "vio    vio     vio     vio     vio";
+        .hp {
+            .divider, input {
+                font-size: 1.3rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1vw;
     }
 }

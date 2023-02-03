@@ -44,14 +44,34 @@ form {
         input {
             text-align: center;
             font-family: 'DM Serif', serif;
-            font-size: 1.3vw;
-            letter-spacing: .5vw;
+            font-size: 1rem;
+            letter-spacing: .5rem;
         }
 
         &.current, &.max {
+            input {
+                width: 8.5vw;
+            }
             label {
                 text-align: center;
             }
         }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .standard-input {
+        .under-label {
+            input {
+                font-size: 1.3vw;
+                letter-spacing: .5vw;
+            }
+            &.current, &.max {
+                input {
+                    width: unset;
+                }
+            }
+        }
+
     }
 }

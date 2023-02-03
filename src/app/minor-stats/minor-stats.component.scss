@@ -1,24 +1,24 @@
 form {
     background-color: #282828;
+    opacity: .8;
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 1rem;
-    padding: .5rem 0;
 
     .standard-input {
-        input {
-            font-family: 'DM Serif', serif;
-        }
+        flex-direction: row;
+        gap: 0.5rem;
+
         &.level {
             padding-left: 1rem;
-            border-left: 1px solid white;
+            // border-left: 1px solid white;
         }
         &.xp {
             padding-left: 1rem;
             padding-right: 1rem;
-            border-left: 1px solid white;
-            border-right: 1px solid white;
+            // border-left: 1px solid white;
+            // border-right: 1px solid white;
         }
         label {
             place-self: center;
@@ -32,7 +32,13 @@ form {
         text-align: center;
         background-color: #282828;
         color: white;
-        font-family: 'Poppins Bold', sans-serif;
-        font-size: 1.5rem;
+        font-family: 'DM Serif', serif;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    form {
+        opacity: 1;
     }
 }

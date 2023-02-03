@@ -2,7 +2,7 @@
     <form class="info-section" [formGroup]="identityForm">
         <span class="standard-input label-input-layout name">
             <label for="name">NAME</label>
-            <input autocomplete="off" spellcheck="false" id="name" type="text" formControlName="name">
+            <textarea appTextareaAutosize spellcheck="false" id="name" type="text" formControlName="name"></textarea>
         </span>
         <span class="standard-input label-input-layout">
             <label for="species">SPECIES</label>

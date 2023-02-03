@@ -1,21 +1,76 @@
 .sheet-layout {
     margin: auto;
     height: 100%;
+    width: 90vw;
+    padding: 0 2rem;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
     display: grid;
+    place-content: center;
+    grid-gap: 1rem;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content repeat(5, 1fr);
+    grid-auto-rows: min-content;
+
+    .pics {
+        grid-row: 2 / 7;
+        grid-column: 1;
+    }
+    .minor-stats {
+        grid-row: 6 / 7;
+        grid-column: 1;
+        place-self: end stretch;
+    }
+    
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
+    .sheet-layout {
+        .span-two {
+            grid-column: 1 /span 2;
+        }
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: repeat(2, 1fr) repeat(8, min-content);
+        .identity {
+            // row-start / col-start / row-end / col-end
+            grid-row: 1 / 4;
+            grid-column: 1;
+        }
+        .pics {
+            grid-row: 1 / 4;
+            grid-column: 2;
+        }
+        .minor-stats {
+            grid-row: 3 / 5;
+            place-self: end stretch;
+        }
+        .stats {
+            grid-row: 5;
+        }
+        .traits {
+            grid-row: 6;
+        }
+        .attunements {
+            grid-row: 7;
+        }
+        .inventory {
+            grid-row: 8;
+        }
+        .notes {
+            grid-row: 9;
+        }
+        .utilities {
+            grid-row: 10;
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
     .sheet-layout {
         width: 65vw;
-        place-content: center;
-        grid-template-columns: repeat(2, 50%);
-        grid-template-rows: repeat(8, min-content);
-        grid-gap: 1rem;
-    
-        padding: 0 2rem;
-        border-left: 1px solid white;
-        border-right: 1px solid white;
-    
+        // grid-template-rows: repeat(8, min-content);
+
         .identity {
             // row-start / col-start / row-end / col-end
             grid-row: 1 / 4;
@@ -26,32 +81,28 @@
             grid-column: 2;
         }
         .stats {
-            grid-row: 3;
-            grid-column: 1 / span 2;
+            grid-row: 3 / 5;
+            place-self: end stretch;
         }
         .traits {
-            grid-row: 4;
-            grid-column: 1 / span 2;
+            grid-row: 5;
         }
         .attunements {
-            grid-row: 5;
+            grid-row: 7;
             grid-column: 1;
         }
         .inventory {
-            grid-row: 5;
+            grid-row: 7;
             grid-column: 2;
         }
         .minor-stats {
             grid-row: 6;
-            grid-column: 1 / span 2;
         }
         .notes {
-            grid-row: 7;
-            grid-column: 1 / span 2;
+            grid-row: 8;
         }
         .utilities {
-            grid-row: 8;
-            grid-column: 1 / span 2;
+            grid-row: 9;
         }
     }
 }

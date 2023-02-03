@@ -1,8 +1,9 @@
 form {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    grid-auto-rows: min-content;
+    grid-gap: 1rem;
+    place-content: center;
 }
 .standard-input {
     .single-column {
@@ -10,13 +11,46 @@ form {
         flex-direction: column;
         justify-content: center;
         input {
-            font-size: 2vw;
+            font-size: 2rem;
         }
     }
     textarea {
-        font-size: .85vw;
+        font-size: .65rem;
         text-align: center;
         text-transform: capitalize;
         border-bottom: 1px solid rgb(151, 151, 151);
+    }
+}
+@media screen and (min-width: 375px) {
+    .standard-input {
+        textarea {
+            font-size: .7rem;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    form {
+        grid-template-columns: repeat(3, min-content);
+        grid-template-rows: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    } 
+    .standard-input {
+        .single-column {
+            input {
+                font-size: 2vw;
+            }
+        }
+        textarea {
+            font-size: .85vw;
+        }
     }
 }
