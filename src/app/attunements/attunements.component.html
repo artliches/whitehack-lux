@@ -1,93 +1,187 @@
 <form class="dark-layout" [formGroup]="attunementsForm">
-    <span class="title section-title">
-      <span (click)="toggleAttunements()" class="clickable">ATTUNEMENTS</span>
+  <span class="title section-title">
+    <span (click)="toggleAttunements()" class="clickable">ATTUNEMENTS</span>
+  </span>
+
+  <span *ngIf="showAttunements" class="job-shuffle">
+      <span class="shuffle-layout">
+        <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'deft'}" (click)="changeJob('deft')">DEFT</strong>
+        <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'strong'}" (click)="changeJob('strong')">STRONG</strong>
+        <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'wise'}" (click)="changeJob('wise')">WISE</strong>
+        <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'brave'}" (click)="changeJob('brave')">BRAVE</strong>
+        <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'fortunate'}" (click)="changeJob('fortunate')">FORTUNATE</strong>
+      </span>
+      <span class="slot-instructions" *ngIf="currentJob === 'wise' || currentJob === 'deft'">double-click/long-press a slot to highlight it</span>
+  </span>
+
+  <span class="attunement-section"
+      formGroupName="strong"
+      *ngIf="currentJob === 'strong' && showAttunements">
+      <span class="standard-input label-input-layout" formGroupName="keywords">
+        <span class="under-label">
+          <label>KEYWORD</label>
+          <input autocomplete="off" spellcheck="false" type="text" id="value" formControlName="value">
+        </span>
+        <span class="under-label current">
+          <label>CURRENT</label>
+          <input autocomplete="off" spellcheck="false" type="number" id="currentUses" formControlName="currentUses">
+        </span>
+        <span class="under-label max">
+          <label>MAX</label>
+          <input autocomplete="off" spellcheck="false" type="number" id="maxUses" formControlName="maxUses">
+        </span>
+      </span>
+      <textarea spellcheck="false" appTextareaAutosize id="one" formControlName="one"></textarea>
+      <textarea spellcheck="false" appTextareaAutosize id="two" formControlName="two"></textarea>
+      <textarea spellcheck="false" appTextareaAutosize id="three" formControlName="three"></textarea>
+      <textarea spellcheck="false" appTextareaAutosize id="four" formControlName="four"></textarea>
+  </span>
+
+  <span class="multi-slot-section attunement-section"
+  formGroupName="wise"
+  *ngIf="currentJob === 'wise' && showAttunements">
+      <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="firstSection">
+        <textarea spellcheck="false" appTextareaAutosize id="first one wise" formControlName="one"></textarea>
+        <textarea spellcheck="false" appTextareaAutosize id="first two wise" formControlName="two"></textarea>
+        <textarea spellcheck="false" appTextareaAutosize id="first three wise" formControlName="three"></textarea>
+        <textarea spellcheck="false" appTextareaAutosize id="first four wise" formControlName="four"></textarea>
+      </div>
+
+      <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="secondSection">
+        <textarea spellcheck="false" appTextareaAutosize id="second one wise" formControlName="one"></textarea>
+        <textarea spellcheck="false" appTextareaAutosize id="second two wise" formControlName="two"></textarea>
+      </div>
+
+      <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="thirdSection">
+        <textarea spellcheck="false" appTextareaAutosize id="third one wise" formControlName="one"></textarea>
+        <textarea spellcheck="false" appTextareaAutosize id="third two wise" formControlName="two"></textarea>
+      </div>
+
+      <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fourSection">
+        <textarea spellcheck="false" appTextareaAutosize id="fourth one wise" formControlName="one"></textarea>
+        <textarea spellcheck="false" appTextareaAutosize id="fourth two wise" formControlName="two"></textarea>
+      </div>
+
+      <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fifthSection">
+        <textarea spellcheck="false" appTextareaAutosize id="fifth one wise" formControlName="one"></textarea>
+        <textarea spellcheck="false" appTextareaAutosize id="fifth two wise" formControlName="two"></textarea>
+      </div>
     </span>
 
-    <span *ngIf="showAttunements" class="job-shuffle">
-        <span class="shuffle-layout">
-          <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'deft'}" (click)="changeJob('deft')">DEFT</strong>
-          <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'strong'}" (click)="changeJob('strong')">STRONG</strong>
-          <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'wise'}" (click)="changeJob('wise')">WISE</strong>
-        </span>
-        <span class="slot-instructions" *ngIf="currentJob === 'wise' || currentJob === 'deft'">double-click/long-press a slot to highlight it</span>
+    <span
+      class="multi-slot-section attunement-section"
+      formGroupName="deft"
+      *ngIf="currentJob === 'deft' && showAttunements">
+      <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="firstSection">
+        <textarea spellcheck="false" appTextareaAutosize id="first one deft" formControlName="one"></textarea>
+        <textarea spellcheck="false" appTextareaAutosize id="first two deft" formControlName="two"></textarea>
+      </div>
+
+      <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="secondSection">
+        <textarea spellcheck="false" appTextareaAutosize id="second one deft" formControlName="one"></textarea>
+        <textarea spellcheck="false" appTextareaAutosize id="second two deft" formControlName="two"></textarea>
+      </div>
+
+      <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="thirdSection">
+        <textarea spellcheck="false" appTextareaAutosize id="third one deft" formControlName="one"></textarea>
+        <textarea spellcheck="false" appTextareaAutosize id="third two deft" formControlName="two"></textarea>
+      </div>
+
+      <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fourSection">
+        <textarea spellcheck="false" appTextareaAutosize id="fourth one deft" formControlName="one"></textarea>
+        <textarea spellcheck="false" appTextareaAutosize id="fourth two deft" formControlName="two"></textarea>
+      </div>
     </span>
 
     <span class="attunement-section"
-        formGroupName="strong"
-        *ngIf="currentJob === 'strong' && showAttunements">
-        <span class="standard-input label-input-layout" formGroupName="keywords">
+      formGroupName="brave"
+      *ngIf="currentJob === 'brave' && showAttunements"
+    >
+      <textarea spellcheck="false" appTextareaAutosize id="one" formControlName="one"></textarea>
+      <textarea spellcheck="false" appTextareaAutosize id="two" formControlName="two"></textarea>
+      <textarea spellcheck="false" appTextareaAutosize id="three" formControlName="three"></textarea>
+      <textarea spellcheck="false" appTextareaAutosize id="four" formControlName="four"></textarea>
+    </span>
+    
+    <span class="attunement-section"
+      formGroupName="fortunate"
+      *ngIf="currentJob === 'fortunate' && showAttunements"
+    >
+      <span class="fortunate-group" formGroupName="firstSection">
+        <span class="standard-input label-input-layout">
           <span class="under-label">
-            <label>KEYWORD</label>
-            <input autocomplete="off" spellcheck="false" type="text" id="value" formControlName="value">
-          </span>
-          <span class="under-label current">
-            <label>CURRENT</label>
-            <input autocomplete="off" spellcheck="false" type="number" id="currentUses" formControlName="currentUses">
-          </span>
-          <span class="under-label max">
-            <label>MAX</label>
-            <input autocomplete="off" spellcheck="false" type="number" id="maxUses" formControlName="maxUses">
+            <label>IDENTITY</label>
+            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
           </span>
         </span>
-        <textarea spellcheck="false" appTextareaAutosize id="one" formControlName="one"></textarea>
-        <textarea spellcheck="false" appTextareaAutosize id="two" formControlName="two"></textarea>
-        <textarea spellcheck="false" appTextareaAutosize id="three" formControlName="three"></textarea>
-        <textarea spellcheck="false" appTextareaAutosize id="four" formControlName="four"></textarea>
+        <span class="standard-input label-input-layout">
+          <span class="under-label">
+            <label>VOCATION</label>
+            <textarea spellcheck="false" appTextareaAutosize id="vocation" formControlName="vocation"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout">
+          <span class="under-label">
+            <label>XP</label>
+            <input autocomplete="off" spellcheck="false" type="text" id="xp" formControlName="xp">
+          </span>
+        </span>
+        <span class="standard-input label-input-layout">
+          <span class="under-label">
+            <label>IDENTITY</label>
+            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout">
+          <span class="under-label">
+            <label>IDENTITY</label>
+            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout">
+          <span class="under-label">
+            <label>IDENTITY</label>
+            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout">
+          <span class="under-label">
+            <label>IDENTITY</label>
+            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout">
+          <span class="under-label">
+            <label>IDENTITY</label>
+            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout">
+          <span class="under-label">
+            <label>IDENTITY</label>
+            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout">
+          <span class="under-label">
+            <label>IDENTITY</label>
+            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout">
+          <span class="under-label">
+            <label>IDENTITY</label>
+            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+          </span>
+        </span>
+        <input autocomplete="off" spellcheck="false" type="text" id="hd" formControlName="hd">
+        <input autocomplete="off" spellcheck="false" type="text" id="hp" formControlName="hp">
+        <input autocomplete="off" spellcheck="false" type="text" id="ac" formControlName="ac">
+        <input autocomplete="off" spellcheck="false" type="text" id="st" formControlName="st">
+        <input autocomplete="off" spellcheck="false" type="text" id="av" formControlName="av">
+        <input autocomplete="off" spellcheck="false" type="text" id="morale" formControlName="morale">
+        <textarea spellcheck="false" appTextareaAutosize id="special" formControlName="special"></textarea>
+
+      </span>
     </span>
-
-    <span class="multi-slot-section attunement-section"
-    formGroupName="wise"
-    *ngIf="currentJob === 'wise' && showAttunements">
-        <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="firstSection">
-          <textarea spellcheck="false" appTextareaAutosize id="first one wise" formControlName="one"></textarea>
-          <textarea spellcheck="false" appTextareaAutosize id="first two wise" formControlName="two"></textarea>
-          <textarea spellcheck="false" appTextareaAutosize id="first three wise" formControlName="three"></textarea>
-          <textarea spellcheck="false" appTextareaAutosize id="first four wise" formControlName="four"></textarea>
-        </div>
-
-        <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="secondSection">
-          <textarea spellcheck="false" appTextareaAutosize id="second one wise" formControlName="one"></textarea>
-          <textarea spellcheck="false" appTextareaAutosize id="second two wise" formControlName="two"></textarea>
-        </div>
-
-        <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="thirdSection">
-          <textarea spellcheck="false" appTextareaAutosize id="third one wise" formControlName="one"></textarea>
-          <textarea spellcheck="false" appTextareaAutosize id="third two wise" formControlName="two"></textarea>
-        </div>
-
-        <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fourSection">
-          <textarea spellcheck="false" appTextareaAutosize id="fourth one wise" formControlName="one"></textarea>
-          <textarea spellcheck="false" appTextareaAutosize id="fourth two wise" formControlName="two"></textarea>
-        </div>
-
-        <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fifthSection">
-          <textarea spellcheck="false" appTextareaAutosize id="fifth one wise" formControlName="one"></textarea>
-          <textarea spellcheck="false" appTextareaAutosize id="fifth two wise" formControlName="two"></textarea>
-        </div>
-      </span>
-
-      <span
-        class="multi-slot-section attunement-section"
-        formGroupName="deft"
-        *ngIf="currentJob === 'deft' && showAttunements">
-        <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="firstSection">
-          <textarea spellcheck="false" appTextareaAutosize id="first one deft" formControlName="one"></textarea>
-          <textarea spellcheck="false" appTextareaAutosize id="first two deft" formControlName="two"></textarea>
-        </div>
-
-        <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="secondSection">
-          <textarea spellcheck="false" appTextareaAutosize id="second one deft" formControlName="one"></textarea>
-          <textarea spellcheck="false" appTextareaAutosize id="second two deft" formControlName="two"></textarea>
-        </div>
-
-        <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="thirdSection">
-          <textarea spellcheck="false" appTextareaAutosize id="third one deft" formControlName="one"></textarea>
-          <textarea spellcheck="false" appTextareaAutosize id="third two deft" formControlName="two"></textarea>
-        </div>
-
-        <div (dblclick)="addRemoveLongTouchClass($event)" (touchstart)="touchStart($event)" (touchend)="touchEnd()" class="section-group" formGroupName="fourSection">
-          <textarea spellcheck="false" appTextareaAutosize id="fourth one deft" formControlName="one"></textarea>
-          <textarea spellcheck="false" appTextareaAutosize id="fourth two deft" formControlName="two"></textarea>
-        </div>
-      </span>
 </form>

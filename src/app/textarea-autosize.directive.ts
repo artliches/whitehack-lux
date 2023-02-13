@@ -22,6 +22,6 @@ export class TextareaAutosizeDirective implements OnInit {
 
   resize() {
     this.elementRef.nativeElement.style.height = '0';
-     this.elementRef.nativeElement.style.height = this.elementRef.nativeElement.scrollHeight + 'px';
+    this.elementRef.nativeElement.style.height = this.elementRef.nativeElement.scrollHeight + 'px';
   }
 }

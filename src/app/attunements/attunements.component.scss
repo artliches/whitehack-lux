@@ -31,8 +31,19 @@ form {
             color: black;
         }
 
+        .fortunate-group {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-auto-rows: min-content;
+            input {
+                background-color: black;
+                color: white;
+                width: 10vw;
+            }
+        }        
+
         &.multi-slot-section {
-            display: flex;
             flex-direction: column;
             gap: 0.5vw;
             .section-group {

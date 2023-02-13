@@ -65,6 +65,26 @@ export class AttunementsComponent implements OnInit {
         two: new FormControl(),
       }),
     }),
+    brave: new FormGroup({
+      one: new FormControl(),
+      two: new FormControl(),
+      three: new FormControl(),
+      four: new FormControl(),
+    }),
+    fortunate: new FormGroup({
+      firstSection: new FormGroup({
+        identity: new FormControl(),
+        vocation: new FormControl(),
+        xp: new FormControl(),
+        hd: new FormControl(),
+        hp: new FormControl(),
+        ac: new FormControl(),
+        st: new FormControl(),
+        av: new FormControl(),
+        morale: new FormControl(),
+        special: new FormControl(),
+      })
+    }),
   });
 
   slotHighlightObject: any = {
@@ -179,6 +199,12 @@ export class AttunementsComponent implements OnInit {
             one: attunementsData.deft.fourSection.one,
             two: attunementsData.deft.fourSection.two,
           },
+        },
+        brave: {
+          one: attunementsData.brave.one,
+          two: attunementsData.brave.two,
+          three: attunementsData.brave.three,
+          four: attunementsData.brave.four,
         },
       });
     }

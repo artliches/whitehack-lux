@@ -33,21 +33,21 @@
     }
 }
 
-@media screen and (min-width: 375px) {
-    .inventory-layout {
-        .inventory-slots-layout {
-            textarea {
-                width: 40vw;
-            }
-        }
-    }
-}
-
 @media screen and (min-width: 425px) {
     .inventory-layout {
         .inventory-slots-layout {
             textarea {
                 width: 44vw;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .inventory-layout {
+        .inventory-slots-layout {
+            textarea {
+                width: 42.5vw;
             }
         }
     }
