@@ -35,7 +35,9 @@ export class StorageManagerService {
   }
 
   clearStorage() {
-    window.localStorage.clear();
+    this.charSheetList.forEach(key => {
+      window.localStorage.removeItem(`${this.address}${key}`);
+    });
     location.reload();
   }
 

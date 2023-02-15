@@ -24,7 +24,8 @@ form {
     .attunement-section {
         display: flex;
         flex-direction: column;
-        gap: 0.5vw;
+        gap: 0.5rem;
+        max-width: 100%;
 
         .chosen {
             background-color: white;
@@ -32,26 +33,38 @@ form {
         }
 
         .fortunate-group {
-            width: 100%;
+            max-width: inherit;
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            grid-auto-rows: min-content;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-gap: 1rem;
+            textarea {
+                font-size: 1.3rem;
+                font-family: 'DM Serif', serif;
+                text-transform: capitalize;
+                letter-spacing: .5vw;
+                text-align: center;
+            }
+            .standard-input {
+                display: unset;
+            }
             input {
                 background-color: black;
                 color: white;
-                width: 10vw;
+                width: 100%;
             }
         }        
 
         &.multi-slot-section {
-            flex-direction: column;
-            gap: 0.5vw;
             .section-group {
                 display: flex;
                 flex-direction: column;
                 gap: 0.5vw;
                 padding-bottom: 0.5vw;
                 border-bottom: 1px solid white;
+            }
+            .fortunate-group {
+                padding: 0.5rem;
+                border: 1px solid white;
             }
         }
     }

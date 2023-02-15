@@ -12,6 +12,9 @@
         <strong class="title clickable" [ngClass]="{'enabled': currentJob === 'fortunate'}" (click)="changeJob('fortunate')">FORTUNATE</strong>
       </span>
       <span class="slot-instructions" *ngIf="currentJob === 'wise' || currentJob === 'deft'">double-click/long-press a slot to highlight it</span>
+      <span class="slot-instructions" *ngIf="currentJob === 'fortunate'">
+        <strong>ST & Poor Attributes</strong> = HD+5/ <strong>AV & Good Attributes</strong> = HD+10
+      </span>
   </span>
 
   <span class="attunement-section"
@@ -103,85 +106,257 @@
       <textarea spellcheck="false" appTextareaAutosize id="four" formControlName="four"></textarea>
     </span>
     
-    <span class="attunement-section"
+    <span class="attunement-section multi-slot-section"
       formGroupName="fortunate"
       *ngIf="currentJob === 'fortunate' && showAttunements"
     >
       <span class="fortunate-group" formGroupName="firstSection">
-        <span class="standard-input label-input-layout">
+        <span class="standard-input label-input-layout identity">
           <span class="under-label">
             <label>IDENTITY</label>
             <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
           </span>
         </span>
-        <span class="standard-input label-input-layout">
+        <span class="standard-input label-input-layout vocation">
           <span class="under-label">
             <label>VOCATION</label>
             <textarea spellcheck="false" appTextareaAutosize id="vocation" formControlName="vocation"></textarea>
           </span>
         </span>
-        <span class="standard-input label-input-layout">
+        <span class="standard-input label-input-layout xp">
           <span class="under-label">
             <label>XP</label>
-            <input autocomplete="off" spellcheck="false" type="text" id="xp" formControlName="xp">
+            <textarea spellcheck="false" appTextareaAutosize id="xp" formControlName="xp"></textarea>
           </span>
         </span>
-        <span class="standard-input label-input-layout">
+        <span class="standard-input label-input-layout hd">
+          <span class="under-label">
+            <label>HD</label>
+            <textarea spellcheck="false" appTextareaAutosize id="hd" formControlName="hd"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout hp">
+          <span class="under-label">
+            <label>HP</label>
+            <textarea spellcheck="false" appTextareaAutosize id="hp" formControlName="hp"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout ac">
+          <span class="under-label">
+            <label>AC</label>
+            <textarea spellcheck="false" appTextareaAutosize id="ac" formControlName="ac"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout st">
+          <span class="under-label">
+            <label>ST</label>
+            <textarea spellcheck="false" appTextareaAutosize id="st" formControlName="st"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout av">
+          <span class="under-label">
+            <label>AV</label>
+            <textarea spellcheck="false" appTextareaAutosize id="av" formControlName="av"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout morale">
+          <span class="under-label">
+            <label>MORALE</label>
+            <textarea spellcheck="false" appTextareaAutosize id="morale" formControlName="morale"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout special">
+          <span class="under-label">
+            <label>SPECIAL</label>
+            <textarea spellcheck="false" appTextareaAutosize id="special" formControlName="special"></textarea>
+          </span>
+        </span>
+      </span>
+      <span class="fortunate-group" formGroupName="secondSection">
+        <span class="standard-input label-input-layout identity">
           <span class="under-label">
             <label>IDENTITY</label>
             <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
           </span>
         </span>
-        <span class="standard-input label-input-layout">
+        <span class="standard-input label-input-layout vocation">
+          <span class="under-label">
+            <label>VOCATION</label>
+            <textarea spellcheck="false" appTextareaAutosize id="vocation" formControlName="vocation"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout xp">
+          <span class="under-label">
+            <label>XP</label>
+            <textarea spellcheck="false" appTextareaAutosize id="xp" formControlName="xp"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout hd">
+          <span class="under-label">
+            <label>HD</label>
+            <textarea spellcheck="false" appTextareaAutosize id="hd" formControlName="hd"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout hp">
+          <span class="under-label">
+            <label>HP</label>
+            <textarea spellcheck="false" appTextareaAutosize id="hp" formControlName="hp"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout ac">
+          <span class="under-label">
+            <label>AC</label>
+            <textarea spellcheck="false" appTextareaAutosize id="ac" formControlName="ac"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout st">
+          <span class="under-label">
+            <label>ST</label>
+            <textarea spellcheck="false" appTextareaAutosize id="st" formControlName="st"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout av">
+          <span class="under-label">
+            <label>AV</label>
+            <textarea spellcheck="false" appTextareaAutosize id="av" formControlName="av"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout morale">
+          <span class="under-label">
+            <label>MORALE</label>
+            <textarea spellcheck="false" appTextareaAutosize id="morale" formControlName="morale"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout special">
+          <span class="under-label">
+            <label>SPECIAL</label>
+            <textarea spellcheck="false" appTextareaAutosize id="special" formControlName="special"></textarea>
+          </span>
+        </span>
+      </span>
+      <span class="fortunate-group" formGroupName="thirdSection">
+        <span class="standard-input label-input-layout identity">
           <span class="under-label">
             <label>IDENTITY</label>
             <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
           </span>
         </span>
-        <span class="standard-input label-input-layout">
+        <span class="standard-input label-input-layout vocation">
+          <span class="under-label">
+            <label>VOCATION</label>
+            <textarea spellcheck="false" appTextareaAutosize id="vocation" formControlName="vocation"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout xp">
+          <span class="under-label">
+            <label>XP</label>
+            <textarea spellcheck="false" appTextareaAutosize id="xp" formControlName="xp"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout hd">
+          <span class="under-label">
+            <label>HD</label>
+            <textarea spellcheck="false" appTextareaAutosize id="hd" formControlName="hd"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout hp">
+          <span class="under-label">
+            <label>HP</label>
+            <textarea spellcheck="false" appTextareaAutosize id="hp" formControlName="hp"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout ac">
+          <span class="under-label">
+            <label>AC</label>
+            <textarea spellcheck="false" appTextareaAutosize id="ac" formControlName="ac"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout st">
+          <span class="under-label">
+            <label>ST</label>
+            <textarea spellcheck="false" appTextareaAutosize id="st" formControlName="st"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout av">
+          <span class="under-label">
+            <label>AV</label>
+            <textarea spellcheck="false" appTextareaAutosize id="av" formControlName="av"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout morale">
+          <span class="under-label">
+            <label>MORALE</label>
+            <textarea spellcheck="false" appTextareaAutosize id="morale" formControlName="morale"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout special">
+          <span class="under-label">
+            <label>SPECIAL</label>
+            <textarea spellcheck="false" appTextareaAutosize id="special" formControlName="special"></textarea>
+          </span>
+        </span>
+      </span>
+      <span class="fortunate-group" formGroupName="fourthSection">
+        <span class="standard-input label-input-layout identity">
           <span class="under-label">
             <label>IDENTITY</label>
             <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
           </span>
         </span>
-        <span class="standard-input label-input-layout">
+        <span class="standard-input label-input-layout vocation">
           <span class="under-label">
-            <label>IDENTITY</label>
-            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+            <label>VOCATION</label>
+            <textarea spellcheck="false" appTextareaAutosize id="vocation" formControlName="vocation"></textarea>
           </span>
         </span>
-        <span class="standard-input label-input-layout">
+        <span class="standard-input label-input-layout xp">
           <span class="under-label">
-            <label>IDENTITY</label>
-            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+            <label>XP</label>
+            <textarea spellcheck="false" appTextareaAutosize id="xp" formControlName="xp"></textarea>
           </span>
         </span>
-        <span class="standard-input label-input-layout">
+        <span class="standard-input label-input-layout hd">
           <span class="under-label">
-            <label>IDENTITY</label>
-            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+            <label>HD</label>
+            <textarea spellcheck="false" appTextareaAutosize id="hd" formControlName="hd"></textarea>
           </span>
         </span>
-        <span class="standard-input label-input-layout">
+        <span class="standard-input label-input-layout hp">
           <span class="under-label">
-            <label>IDENTITY</label>
-            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+            <label>HP</label>
+            <textarea spellcheck="false" appTextareaAutosize id="hp" formControlName="hp"></textarea>
           </span>
         </span>
-        <span class="standard-input label-input-layout">
+        <span class="standard-input label-input-layout ac">
           <span class="under-label">
-            <label>IDENTITY</label>
-            <textarea spellcheck="false" appTextareaAutosize id="identity" formControlName="identity"></textarea>
+            <label>AC</label>
+            <textarea spellcheck="false" appTextareaAutosize id="ac" formControlName="ac"></textarea>
           </span>
         </span>
-        <input autocomplete="off" spellcheck="false" type="text" id="hd" formControlName="hd">
-        <input autocomplete="off" spellcheck="false" type="text" id="hp" formControlName="hp">
-        <input autocomplete="off" spellcheck="false" type="text" id="ac" formControlName="ac">
-        <input autocomplete="off" spellcheck="false" type="text" id="st" formControlName="st">
-        <input autocomplete="off" spellcheck="false" type="text" id="av" formControlName="av">
-        <input autocomplete="off" spellcheck="false" type="text" id="morale" formControlName="morale">
-        <textarea spellcheck="false" appTextareaAutosize id="special" formControlName="special"></textarea>
-
+        <span class="standard-input label-input-layout st">
+          <span class="under-label">
+            <label>ST</label>
+            <textarea spellcheck="false" appTextareaAutosize id="st" formControlName="st"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout av">
+          <span class="under-label">
+            <label>AV</label>
+            <textarea spellcheck="false" appTextareaAutosize id="av" formControlName="av"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout morale">
+          <span class="under-label">
+            <label>MORALE</label>
+            <textarea spellcheck="false" appTextareaAutosize id="morale" formControlName="morale"></textarea>
+          </span>
+        </span>
+        <span class="standard-input label-input-layout special">
+          <span class="under-label">
+            <label>SPECIAL</label>
+            <textarea spellcheck="false" appTextareaAutosize id="special" formControlName="special"></textarea>
+          </span>
+        </span>
       </span>
     </span>
 </form>
