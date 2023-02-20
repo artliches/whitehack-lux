@@ -1,17 +1,15 @@
+$standard-gap: 0.5rem;
+$small-gap: 0.3rem;
 form {
     .title{
         &.enabled {
             color: white;
         }
     }
-
     .job-shuffle {
-        display: flex;
-        flex-direction: column;
         text-align: center;
         .shuffle-layout {
             display: flex;
-            flex-direction: row;
             justify-content: space-around;
         }
         .slot-instructions {
@@ -20,138 +18,59 @@ form {
             text-transform: uppercase;
         }
     }
-
     .attunement-section {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
-        max-width: 100%;
-
+        gap: $standard-gap;
         .chosen {
             background-color: white;
             color: black;
         }
+        span.standard-input {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+            .under-label {
+                flex-grow: 1;
+                input {
+                    text-align: center;
+                    font-family: 'DM Serif', serif;
+                    font-size: 1rem;
+                    letter-spacing: .5rem;
+                }
+                label {
+                    font-size: 0.5rem;
+                }
 
+                &.current, &.max {
+                    label {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        &.multi-slot-section {
+            .section-group {
+                border-bottom: 1px solid white;
+                padding-bottom: $small-gap;
+            }
+        }
+        .section-group {
+            display: grid;
+            grid-auto-flow: row;
+            grid-gap: $small-gap;
+        }
         .fortunate-group {
-            max-width: inherit;
+            padding: $standard-gap;
+            border: 1px solid white;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            grid-gap: 1rem;
+            grid-gap: $small-gap;
             textarea {
                 font-size: 1.3rem;
                 font-family: 'DM Serif', serif;
                 text-transform: capitalize;
                 letter-spacing: .5vw;
                 text-align: center;
-            }
-            .standard-input {
-                display: unset;
-            }
-            input {
-                background-color: black;
-                color: white;
-                width: 100%;
-            }
-        }        
-
-        &.multi-slot-section {
-            .section-group {
-                display: flex;
-                flex-direction: column;
-                gap: 0.5vw;
-                padding-bottom: 0.5vw;
-                border-bottom: 1px solid white;
-            }
-            .fortunate-group {
-                padding: 0.5rem;
-                border: 1px solid white;
-            }
-        }
-    }
-}
-
-.standard-input {
-    display: grid;
-    grid-template-columns: auto 10% 10%;
-    column-gap: 0.5rem;
-    .under-label {
-        input {
-            text-align: center;
-            font-family: 'DM Serif', serif;
-            font-size: 1rem;
-            letter-spacing: .5rem;
-        }
-        label {
-            font-size: 0.5rem;
-        }
-
-        &.current, &.max {
-            input {
-                width: 8.5vw;
-            }
-            label {
-                text-align: center;
-            }
-        }
-    }
-}
-
-@media screen and (min-width: 360px) {
-    .standard-input {
-        .under-label {
-            input {
-                width: 65vw;
-            }
-        }
-    }
-}
-
-@media screen and (min-width: 425px) {
-    .standard-input {
-        .under-label {
-            input {
-                width: 70vw;
-            }
-        }
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .standard-input {
-        .under-label {
-            input {
-                width: 69vw;
-            }
-        }
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    .standard-input {
-        .under-label {
-            input {
-                width: 32.7vw;
-            }
-            &.current, &.max {
-                input {
-                    width: unset;
-                }
-            }
-        }
-
-    }
-}
-
-@media screen and (min-width: 1440px) {
-    .standard-input {
-        .under-label {
-            input {
-                font-size: 1.3vw;
-                letter-spacing: .5vw;
-                width: 24vw;
-            }
-            label {
-                font-size: 0.7vw;
             }
         }
     }

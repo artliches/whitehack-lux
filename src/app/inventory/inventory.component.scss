@@ -1,9 +1,11 @@
 .inventory-layout {
-    display: grid;
-    grid-gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
     .individual-layout {
         display: grid;
-        grid-template-columns: 5% auto;
+        grid-template-columns: 5% 1fr;
+        grid-gap: 0.5rem;
         label {
             text-align: center;
             font-size: 0.7rem;
@@ -11,73 +13,12 @@
             padding-top: 0.4rem;
             color: grey;
         }
-
-    }
-    .inventory-slots-layout {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        textarea {
-            border-bottom: 1px solid white;
-            width: 48vw;
-        }
-    }
-}
-
-@media screen and (min-width: 360px) {
-    .inventory-layout {
         .inventory-slots-layout {
+            display: grid;
+            grid-auto-flow: column;
+            grid-gap: 0.5rem;
             textarea {
-                width: 42vw;
-            }
-        }
-    }
-}
-
-@media screen and (min-width: 425px) {
-    .inventory-layout {
-        .inventory-slots-layout {
-            textarea {
-                width: 44vw;
-            }
-        }
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .inventory-layout {
-        .inventory-slots-layout {
-            textarea {
-                width: 42.5vw;
-            }
-        }
-    }
-}
-
-@media screen and (min-width: 810px) {
-    .inventory-layout {
-        .inventory-slots-layout {
-            textarea {
-                width: 42vw;
-            }
-        }
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    .inventory-layout {
-        .inventory-slots-layout {
-            textarea {
-                width: 20vw;
-            }
-        }
-    }
-}
-
-@media screen and (min-width: 1440px) {
-    .inventory-layout {
-        .inventory-slots-layout {
-            textarea {
-                width: 14.5vw;
+                border-bottom: 1px solid white;
             }
         }
     }
